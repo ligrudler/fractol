@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/07/09 17:59:07 by grudler          ###   ########.fr       */
+/*   Updated: 2019/07/09 19:04:04 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct	s_mlx
 	int			size_line;
 	int			endian;
 
+	int			fract;
+
 	int			x;
 	int			y;
 	int			it;
@@ -40,3 +42,7 @@ typedef struct	s_mlx
 	int			it_max;
 	double		zoom;
 }				t_mlx;
+
+int				mandelbrot(void *param);
+void			put_pixel(t_mlx *mlx);
+int				ft_which_frac(char **argv, t_mlx *mlx);
