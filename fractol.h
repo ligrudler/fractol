@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/07/09 13:16:52 by grudler          ###   ########.fr       */
+/*   Updated: 2019/07/09 17:05:24 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # define WINX 1090
 # define WINY 720
+# define ZOOM 150
 
 typedef struct	s_mlx
 {
@@ -26,5 +27,16 @@ typedef struct	s_mlx
 	int			bpp;
 	int			size_line;
 	int			endian;
-	int			scale;
+
+	int			x;
+	int			y;
+	int			it;
+	double		x1;
+	double		y1;
+	int			color;
+	int			c_i;
+	int			c_r;
+	int			z_i;
+	int			z_r;
+	int			it_max;
 }				t_mlx;
