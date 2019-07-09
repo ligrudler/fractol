@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/07/09 19:58:28 by grudler          ###   ########.fr       */
+/*   Updated: 2019/07/09 23:49:43 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	ft_which_frac(char **argv, t_mlx *mlx)
 {
 	if (ft_strcmp(argv[1], "mandelbrot") == 0)
 		mlx->fract = 0;
+	else if (ft_strcmp(argv[1], "julia") == 0)
+		mlx->fract = 1;
 	else
 	{
 		ft_putendl("Usage /fractol \"mandelbrot\"");
@@ -48,7 +50,10 @@ int		main(int argc, char **argv)
 		mlx.canvas = mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.size_line, &mlx.endian);
 		mlx_hook(mlx.win_ptr, KEYPRESS, KEYPRESSMASK, key_press, &mlx);
 		mlx_hook(mlx.win_ptr, KEYRELEASE, KEYRELEASEMASK, key_release, &mlx);
-		mlx_loop_hook(mlx.mlx_ptr, mandelbrot, &mlx);
+		if (mlx.fract == 0)
+			mlx_loop_hook(mlx.mlx_ptr, mandelbrot, &mlx);
+		if (mlx.fract == 1)
+			mlx_loop_hook(mlx.mlx_ptr, julia, &mlx);
 		mlx_loop(mlx.mlx_ptr);
 	}
 	else
