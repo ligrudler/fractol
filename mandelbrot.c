@@ -6,11 +6,21 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 18:41:54 by grudler           #+#    #+#             */
-/*   Updated: 2019/07/09 19:03:58 by grudler          ###   ########.fr       */
+/*   Updated: 2019/07/09 23:20:11 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	init_var(t_mlx *pmlx)
+{
+	pmlx->x = 0;
+	pmlx->y = 0;
+	pmlx->x1 = -2.1;
+	pmlx->y1 = -1.2;
+	pmlx->it_max = 100;
+	pmlx->color = 265;
+}
 
 void	mandel_calc(t_mlx *pmlx)
 {
@@ -28,11 +38,8 @@ void	mandel_calc(t_mlx *pmlx)
 		pmlx->z_i = 2 * pmlx->z_i * temp + pmlx->c_i;
 		pmlx->it++;
 	}
-	if (pmlx->it == pmlx->it_max)
-	{
-		pmlx->color = 0x00FFFF;
+	if (pmlx->it != pmlx->it_max)
 		put_pixel(pmlx);
-	}
 }
 
 int		mandelbrot(void *param)
@@ -40,12 +47,9 @@ int		mandelbrot(void *param)
 	t_mlx	*pmlx;
 
 	pmlx = (t_mlx *)param;
-	pmlx->x = 0;
-	pmlx->y = 0;
-	pmlx->x1 = -2.1;
-	pmlx->y1 = -1.2;
-	pmlx->it_max = 50;
-	pmlx->zoom = 150;
+	init_var(pmlx);
+	ft_bzero(pmlx->canvas, WINX * WINY * 4);
+	init_key(pmlx);
 	while (pmlx->x < WINX)
 	{
 		pmlx->y = 0;
@@ -56,7 +60,7 @@ int		mandelbrot(void *param)
 		}
 		pmlx->x++;
 	}
-	mlx_put_image_to_window(pmlx->mlx_ptr, pmlx->win_ptr, pmlx->img, 50, 50);
+	mlx_put_image_to_window(pmlx->mlx_ptr, pmlx->win_ptr, pmlx->img, 0, 0);
 	return (0);
 	
 }

@@ -6,12 +6,14 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/07/09 19:04:04 by grudler          ###   ########.fr       */
+/*   Updated: 2019/07/09 23:20:13 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "mlx.h"
+#include "keycode.h"
+#include <pthread.h>
 
 # define WINX 1090
 # define WINY 720
@@ -28,6 +30,7 @@ typedef struct	s_mlx
 	int			endian;
 
 	int			fract;
+	char		keyboard[512];
 
 	int			x;
 	int			y;
@@ -46,3 +49,9 @@ typedef struct	s_mlx
 int				mandelbrot(void *param);
 void			put_pixel(t_mlx *mlx);
 int				ft_which_frac(char **argv, t_mlx *mlx);
+
+int				key_press(int key, void *param);
+int				key_release(int key, void *param);
+void			init_key(t_mlx *mlx);
+
+void			init_var(t_mlx *pmlx);

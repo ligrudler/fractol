@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/07/09 19:03:39 by grudler          ###   ########.fr       */
+/*   Updated: 2019/07/09 19:58:28 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	put_pixel(t_mlx *mlx)
 {
-	*(int *)&mlx->canvas[mlx->y * mlx->size_line + mlx->x * 4] = mlx->color;
+	*(int *)&mlx->canvas[mlx->y * mlx->size_line + mlx->x * 4] = mlx->color * mlx->it;
 }
 
 int	ft_which_frac(char **argv, t_mlx *mlx)
@@ -44,7 +44,10 @@ int		main(int argc, char **argv)
 			ft_error();
 		if ((mlx.img = mlx_new_image(mlx.mlx_ptr, WINX, WINY)) == NULL)
 			ft_error();
+		mlx.zoom = 150;
 		mlx.canvas = mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.size_line, &mlx.endian);
+		mlx_hook(mlx.win_ptr, KEYPRESS, KEYPRESSMASK, key_press, &mlx);
+		mlx_hook(mlx.win_ptr, KEYRELEASE, KEYRELEASEMASK, key_release, &mlx);
 		mlx_loop_hook(mlx.mlx_ptr, mandelbrot, &mlx);
 		mlx_loop(mlx.mlx_ptr);
 	}
