@@ -6,16 +6,19 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/07/09 23:47:54 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/22 19:57:04 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft/libft.h"
 #include "mlx.h"
 #include "keycode.h"
+#include "pthread.h"
 
-# define WINX 1090
-# define WINY 720
+# define WINX 1200
+# define WINY 1200
+# define NBR_THREAD 6
+# define WIN_THREAD 200
 
 typedef struct	s_mlx
 {
@@ -33,6 +36,7 @@ typedef struct	s_mlx
 
 	int			x;
 	int			y;
+	int			y_max;
 	int			it;
 	double		x1;
 	double		y1;
@@ -45,7 +49,8 @@ typedef struct	s_mlx
 	double		zoom;
 }				t_mlx;
 
-int				mandelbrot(void *param);
+void			*mandelbrot(void *param);
+int				mandel_thread(t_mlx *pmlx);
 void			put_pixel(t_mlx *mlx);
 int				ft_which_frac(char **argv, t_mlx *mlx);
 
@@ -57,3 +62,5 @@ void			init_var(t_mlx *pmlx);
 void			init_var_julia(t_mlx *pmlx);
 
 int				julia(void *param);
+
+int				mouse_press(int button, int x, int y, void *param);

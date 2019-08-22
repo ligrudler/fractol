@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/07/09 23:49:43 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/22 20:00:30 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_which_frac(char **argv, t_mlx *mlx)
 int		main(int argc, char **argv)
 {
 	t_mlx	mlx;
-
+	
 	if (argc == 2)
 	{
 		if (ft_which_frac(argv, &mlx) == 0)
@@ -46,12 +46,15 @@ int		main(int argc, char **argv)
 			ft_error();
 		if ((mlx.img = mlx_new_image(mlx.mlx_ptr, WINX, WINY)) == NULL)
 			ft_error();
-		mlx.zoom = 150;
 		mlx.canvas = mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.size_line, &mlx.endian);
 		mlx_hook(mlx.win_ptr, KEYPRESS, KEYPRESSMASK, key_press, &mlx);
 		mlx_hook(mlx.win_ptr, KEYRELEASE, KEYRELEASEMASK, key_release, &mlx);
+		mlx_hook(mlx.win_ptr, EV_MOUSE_PRESS, 0, mouse_press, &mlx);
 		if (mlx.fract == 0)
-			mlx_loop_hook(mlx.mlx_ptr, mandelbrot, &mlx);
+		{
+			init_var(&mlx);
+			mlx_loop_hook(mlx.mlx_ptr, mandel_thread, &mlx);
+		}
 		if (mlx.fract == 1)
 			mlx_loop_hook(mlx.mlx_ptr, julia, &mlx);
 		mlx_loop(mlx.mlx_ptr);

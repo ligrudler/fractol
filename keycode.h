@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keycode.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmoucach <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 15:08:37 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/04/26 15:09:27 by jmoucach         ###   ########.fr       */
+/*   Updated: 2019/07/10 16:22:50 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,5 +135,12 @@
 # define KEYPRESSMASK       (1L<<0)
 # define KEYPRESS           2
 # define KEYRELEASE         3
+
+# define EV_KEY_PRESS    2
+# define EV_KEY_RELEA    3
+# define EV_MOUSE_PRESS    4
+# define EV_MOUSE_RELEA    5
+# define EV_MOUSE_MOVE    6
+# define EV_CLOSE_WIN    17
 
 #endif

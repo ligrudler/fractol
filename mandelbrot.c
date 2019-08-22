@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 18:41:54 by grudler           #+#    #+#             */
-/*   Updated: 2019/07/09 23:44:16 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/22 19:58:55 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ void	init_var(t_mlx *pmlx)
 	pmlx->y = 0;
 	pmlx->x1 = -2.1;
 	pmlx->y1 = -1.2;
-	pmlx->it_max = 100;
+	pmlx->it_max = 300;
 	pmlx->color = 265;
+	pmlx->zoom = 300;
+
 }
 
 void	mandel_calc(t_mlx *pmlx)
@@ -42,25 +44,46 @@ void	mandel_calc(t_mlx *pmlx)
 		put_pixel(pmlx);
 }
 
-int		mandelbrot(void *param)
+#include <stdio.h>
+
+void		*mandelbrot(void *param)
 {
 	t_mlx	*pmlx;
 
 	pmlx = (t_mlx *)param;
-	init_var(pmlx);
 	ft_bzero(pmlx->canvas, WINX * WINY * 4);
 	init_key(pmlx);
 	while (pmlx->x < WINX)
 	{
 		pmlx->y = 0;
-		while (pmlx->y < WINY)
+		while (pmlx->y < pmlx->y_max)
 		{
 			mandel_calc(pmlx);
 			pmlx->y++;
 		}
 		pmlx->x++;
 	}
+	return (param);
+}
+
+int		mandel_thread(t_mlx *pmlx)
+{
+	t_mlx		tab[NBR_THREAD];
+	pthread_t	t[NBR_THREAD];
+	int			i;
+
+	i = 0;
+	while (i < NBR_THREAD)
+	{
+		ft_memcpy((void *)&tab[i], (void *)pmlx, sizeof(t_mlx));
+		tab[i].y = WIN_THREAD * i;
+		tab[i].y_max = WIN_THREAD * (i + 1);
+		if (pthread_create(&t[i], NULL, mandelbrot, &tab[i]))
+			ft_error();
+		i ++;
+	}
+	while (i--)
+		pthread_join(t[i], NULL);
 	mlx_put_image_to_window(pmlx->mlx_ptr, pmlx->win_ptr, pmlx->img, 0, 0);
 	return (0);
-	
 }
