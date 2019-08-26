@@ -6,15 +6,18 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/22 20:00:30 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/26 18:50:45 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	put_pixel(t_mlx *mlx)
+void	put_pixel(t_mlx *mlx, int color, int x, int y)
 {
-	*(int *)&mlx->canvas[mlx->y * mlx->size_line + mlx->x * 4] = mlx->color * mlx->it;
+	//printf("x = %d\n", mlx->x);
+	//printf("y = %d\n", mlx->y);
+	if (mlx->x <= WINX && mlx->y <= WINY)
+		*(int *)&mlx->canvas[mlx->y * mlx->size_line + mlx->x * 4] = color * mlx->it;
 }
 
 int	ft_which_frac(char **argv, t_mlx *mlx)
@@ -32,6 +35,17 @@ int	ft_which_frac(char **argv, t_mlx *mlx)
 
 }
 
+/*void	draw_fract(t_mlx *mlx)
+{
+	if (mlx->fract == 0)
+		{
+			init_var(mlx);
+			mlx_loop_hook(mlx->mlx_ptr, mandel_thread, mlx);
+		}
+	if (mlx->fract == 1)
+		mlx_loop_hook(mlx->mlx_ptr, julia, mlx);
+}*/
+
 int		main(int argc, char **argv)
 {
 	t_mlx	mlx;
@@ -47,16 +61,20 @@ int		main(int argc, char **argv)
 		if ((mlx.img = mlx_new_image(mlx.mlx_ptr, WINX, WINY)) == NULL)
 			ft_error();
 		mlx.canvas = mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.size_line, &mlx.endian);
-		mlx_hook(mlx.win_ptr, KEYPRESS, KEYPRESSMASK, key_press, &mlx);
-		mlx_hook(mlx.win_ptr, KEYRELEASE, KEYRELEASEMASK, key_release, &mlx);
-		mlx_hook(mlx.win_ptr, EV_MOUSE_PRESS, 0, mouse_press, &mlx);
 		if (mlx.fract == 0)
 		{
 			init_var(&mlx);
 			mlx_loop_hook(mlx.mlx_ptr, mandel_thread, &mlx);
 		}
 		if (mlx.fract == 1)
-			mlx_loop_hook(mlx.mlx_ptr, julia, &mlx);
+		{
+			init_var_julia(&mlx);
+			mlx_loop_hook(mlx.mlx_ptr, julia_thread, &mlx);
+		}
+		mlx_hook(mlx.win_ptr, KEYPRESS, KEYPRESSMASK, key_press, &mlx);
+		mlx_hook(mlx.win_ptr, KEYRELEASE, KEYRELEASEMASK, key_release, &mlx);
+		mlx_mouse_hook(mlx.win_ptr, mouse_press, &mlx);
+		//mlx_hook(mlx.win_ptr, EV_MOUSE_PRESS, 0, mouse_press, &mlx);
 		mlx_loop(mlx.mlx_ptr);
 	}
 	else

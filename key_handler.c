@@ -6,11 +6,13 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 19:12:43 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/22 14:21:38 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/26 19:03:05 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+#include <stdio.h>
 
 int		key_press(int key, void *param)
 {
@@ -34,8 +36,8 @@ void	init_key(t_mlx *mlx)
 {
 	if (mlx->keyboard[KEY_ESCAPE])
 	{
-		mlx_destroy_image(mlx->mlx_ptr, mlx->img);
-		mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
+		//mlx_destroy_image(mlx->mlx_ptr, mlx->img);
+		//mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr); abort trap 6
 		exit(0);
 	}
 	if (mlx->keyboard[KEY_O])

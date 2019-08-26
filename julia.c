@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 23:23:06 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/22 12:35:29 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/26 18:54:08 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 void	init_var_julia(t_mlx *pmlx)
 {
 	pmlx->x = 0;
-	pmlx->x1 = -1;
-	pmlx->y1 = -1.2;
+	pmlx->y = 0;
+	pmlx->x1 = -1.8;
+	pmlx->y1 = -1.4;
 	pmlx->it_max = 300;
 	pmlx->color = 265;
+	pmlx->zoom = 300;
 }
 
 void	julia_calc(t_mlx *pmlx)
@@ -39,12 +41,11 @@ void	julia_calc(t_mlx *pmlx)
 	}
 }
 
-int		julia(void *param)
+void		*julia(void *param)
 {
 	t_mlx		*pmlx;
 
 	pmlx = (t_mlx *)param;
-	init_var_julia(pmlx);
 	ft_bzero(pmlx->canvas, WINX * WINY * 4);
 	init_key(pmlx);
 	while(pmlx->x < WINX)
@@ -53,13 +54,35 @@ int		julia(void *param)
 		while (pmlx->y < WINY)
 		{
 			julia_calc(pmlx);
-			if (pmlx->it != pmlx->it_max)
-				put_pixel(pmlx);
+			if (pmlx->it >= pmlx->it_max)
+				put_pixel(pmlx, 0x000000, pmlx->x, pmlx->y);
+			else 
+				put_pixel(pmlx, pmlx->color, pmlx->x, pmlx->y);
 			pmlx->y++;
 		}
 		pmlx->x++;
 	}
+	return (param);
+}
+
+int			julia_thread(t_mlx *pmlx)
+{
+	t_mlx		tab[NBR_THREAD];
+	pthread_t	t[NBR_THREAD];
+	int			i;
+
+	i = 0;
+	while (i < NBR_THREAD)
+	{
+		ft_memcpy((void *)&tab[i], (void *)pmlx, sizeof(t_mlx));
+		tab[i].y = WIN_THREAD * i;
+		tab[i].y_max = WIN_THREAD * (i + 1);
+		if (pthread_create(&t[i], NULL, julia, &tab[i]))
+			ft_error();
+		i ++;
+	}
+	while (i--)
+		pthread_join(t[i], NULL);
 	mlx_put_image_to_window(pmlx->mlx_ptr, pmlx->win_ptr, pmlx->img, 0, 0);
 	return (0);
 }
-
