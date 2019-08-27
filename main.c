@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/26 18:50:45 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/27 23:03:02 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	ft_which_frac(char **argv, t_mlx *mlx)
 		mlx->fract = 0;
 	else if (ft_strcmp(argv[1], "julia") == 0)
 		mlx->fract = 1;
+	else if (ft_strcmp(argv[1], "burningship") == 0)
+		mlx->fract = 2;
 	else
 	{
 		ft_putendl("Usage /fractol \"mandelbrot\"");
@@ -37,13 +39,16 @@ int	ft_which_frac(char **argv, t_mlx *mlx)
 
 /*void	draw_fract(t_mlx *mlx)
 {
-	if (mlx->fract == 0)
+	if (mlx.fract == 0)
 		{
-			init_var(mlx);
-			mlx_loop_hook(mlx->mlx_ptr, mandel_thread, mlx);
+			init_var(&mlx);
+			mlx_loop_hook(mlx.mlx_ptr, mandel_thread, &mlx);
 		}
-	if (mlx->fract == 1)
-		mlx_loop_hook(mlx->mlx_ptr, julia, mlx);
+		if (mlx.fract == 1)
+		{
+			init_var_julia(&mlx);
+			mlx_loop_hook(mlx.mlx_ptr, julia_thread, &mlx);
+		}
 }*/
 
 int		main(int argc, char **argv)
@@ -70,6 +75,11 @@ int		main(int argc, char **argv)
 		{
 			init_var_julia(&mlx);
 			mlx_loop_hook(mlx.mlx_ptr, julia_thread, &mlx);
+		}
+		if (mlx.fract == 2)
+		{
+			init_var_julia(&mlx);
+			mlx_loop_hook(mlx.mlx_ptr, burning_thread, &mlx);
 		}
 		mlx_hook(mlx.win_ptr, KEYPRESS, KEYPRESSMASK, key_press, &mlx);
 		mlx_hook(mlx.win_ptr, KEYRELEASE, KEYRELEASEMASK, key_release, &mlx);

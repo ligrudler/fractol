@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/26 19:04:15 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/27 23:11:54 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "mlx.h"
 #include "keycode.h"
 #include "pthread.h"
+#include "math.h"
 
 # define WINX 1000
 # define WINY 1000
@@ -47,6 +48,8 @@ typedef struct	s_mlx
 	double		z_r;
 	int			it_max;
 	double		zoom;
+	double		temp;
+
 }				t_mlx;
 
 void			*mandelbrot(void *param);
@@ -64,5 +67,11 @@ void			init_var_julia(t_mlx *pmlx);
 
 void			*julia(void *param);
 int				julia_thread(t_mlx *pmlx);
+
+int				burning_thread(t_mlx *pmlx);
+void			*burning(void *param);
+void			burning_calc(t_mlx *pmlx);
+void			init_var_burning(t_mlx *pmlx);
+
 
 int				mouse_press(int button, int x, int y, void *param);
