@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 16:25:18 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/28 16:56:00 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:55:59 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,23 @@
 
 void		fill_palette(t_mlx *mlx)
 {
-	mlx->palette[0] = 0xFFF8DC;
+	mlx->palette[0] = JULIABROT_0;
+	mlx->palette[1] = JULIABROT_1;
+	mlx->palette[2] = JULIABROT_2;
+	mlx->palette[3] = JULIABROT_3;
+	mlx->palette[4] = JULIABROT_4;
+	mlx->palette[5] = JULIABROT_5;
+	mlx->palette[6] = JULIABROT_6;
+	mlx->palette[7] = JULIABROT_7;
+	mlx->palette[8] = JULIABROT_8;
+	mlx->palette[9] = JULIABROT_9;
+	mlx->palette[10] = JULIABROT_10;
+	mlx->palette[11] = JULIABROT_11;
+	mlx->palette[12] = JULIABROT_12;
+	mlx->palette[13] = JULIABROT_13;
+	mlx->palette[14] = JULIABROT_14;
+	mlx->palette[15] = JULIABROT_15;
+	/*mlx->palette[0] = 0xFFF8DC;
 	mlx->palette[1] = 0xFFEBCD;
 	mlx->palette[2] = 0xFFDEAD;
 	mlx->palette[3] = 0xF5DEB3;
@@ -29,5 +45,5 @@ void		fill_palette(t_mlx *mlx)
 	mlx->palette[12] = 0xD2691E;
 	mlx->palette[13] = 0x8B4513;
 	mlx->palette[14] = 0xA0522D;
-	mlx->palette[15] = 0xa52A2A;
+	mlx->palette[15] = 0xA52A2A;*/
 }

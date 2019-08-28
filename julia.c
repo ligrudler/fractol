@@ -54,7 +54,7 @@ void		*julia(void *param)
 			if (pmlx->it >= pmlx->it_max)
 				put_pixel(pmlx, 0x000000, pmlx->x, pmlx->y);
 			else 
-				put_pixel(pmlx, pmlx->palette[pmlx->it % 4], pmlx->x, pmlx->y);
+				put_pixel(pmlx, pmlx->palette[pmlx->it % 16], pmlx->x, pmlx->y);
 			pmlx->y++;
 		}
 		pmlx->x++;

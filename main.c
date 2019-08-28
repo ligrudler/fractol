@@ -17,7 +17,7 @@ void	put_pixel(t_mlx *mlx, int color, int x, int y)
 	//printf("x = %d\n", mlx->x);
 	//printf("y = %d\n", mlx->y);
 	if (mlx->x <= WINX && mlx->y <= WINY)
-		*(int *)&mlx->canvas[mlx->y * mlx->size_line + mlx->x * 4] = color * mlx->it;
+		*(int *)&mlx->canvas[mlx->y * mlx->size_line + mlx->x * 4] = color;
 }
 
 int	ft_which_frac(char **argv, t_mlx *mlx)
