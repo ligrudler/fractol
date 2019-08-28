@@ -83,9 +83,9 @@ int			mouse_press(int button, int x, int y, void *param)
 		pmlx->zoom = pmlx->zoom / 1.3;
 		pmlx->it_max--;
 	}
-	if (x >= 800 && y >= 500 && pmlx->chgcolor != 1)
+	if (x > 1155 && y > 467 && x < 1190 && y < 492 && pmlx->chgcolor != 1)
 		pmlx->chgcolor++;
-	else
+	else if (x > 1155 && y > 467 && x < 1190 && y < 492)
 		pmlx->chgcolor = 0;
 	return (0);
 }
