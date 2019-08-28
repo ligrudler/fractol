@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 22:59:01 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/28 11:41:22 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/28 11:59:02 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_var_burning(t_mlx *pmlx)
 	pmlx->x1 = -2.1;
 	pmlx->y1 = -1.7;
 	pmlx->it_max = 200;
-	pmlx->color = 270;
+	pmlx->color = 265;
 	pmlx->zoom = 300;
 }
 
@@ -50,7 +50,6 @@ void		*burning(void *param)
 	t_mlx	*pmlx;
 
 	pmlx = (t_mlx *)param;
-	ft_bzero(pmlx->canvas, WINX * WINY * 4);
 	while (pmlx->x < WINX)
 	{
 		pmlx->y = 0;
@@ -71,6 +70,7 @@ int		burning_thread(t_mlx *pmlx)
 	int			i;
 
 	i = 0;
+	ft_bzero(pmlx->canvas, WINX * WINY * 4);
 	init_key(pmlx);
 	while (i < NBR_THREAD)
 	{

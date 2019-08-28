@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/27 23:11:54 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/28 11:54:04 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 # define WINX 1000
 # define WINY 1000
-# define NBR_THREAD 5
-# define WIN_THREAD 200
+# define NBR_THREAD 4
+# define WIN_THREAD 250
 
 typedef struct	s_mlx
 {
