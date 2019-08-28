@@ -37,7 +37,7 @@ void	print_legend(t_mlx *mlx)
 {
 	color_box_legend(mlx);
 	if (mlx->fract == 0)
-		mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 820, 60, 0x0000CD, "MANDELBROT");
+		mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 820, 60, 0x191970, "MANDELBROT");
 	if (mlx->fract == 1)
 		mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 820, 60, 0x0000CD, "JULIA");
 	if (mlx->fract == 2)

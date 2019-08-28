@@ -40,10 +40,11 @@ void	init_key(t_mlx *mlx)
 		//mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr); abort trap 6
 		exit(0);
 	}
+	printf("%f\n", mlx->zoom);
 	if ((mlx->keyboard[KEY_LEFT] && !mlx->keyboard[KEY_RIGHT]) || (mlx->keyboard[KEY_RIGHT] && !mlx->keyboard[KEY_LEFT]))
-		mlx->x1 *= mlx->keyboard[KEY_LEFT] ? 1/1.1 : 1.1;
+		mlx->x1 += mlx->keyboard[KEY_LEFT] ? 10 / mlx->zoom: -10 / mlx->zoom;
 	if ((mlx->keyboard[KEY_DOWN] && !mlx->keyboard[KEY_UP]) || (mlx->keyboard[KEY_UP] && !mlx->keyboard[KEY_DOWN]))
-		mlx->y1 *= mlx->keyboard[KEY_UP] ? 1/1.1 : 1.1;
+		mlx->y1 += mlx->keyboard[KEY_UP] ? 10 / mlx->zoom: -10 / mlx->zoom;
 	if (mlx->keyboard[KEY_SPACEBAR])
 	{
 		if (mlx->fract == 0)
