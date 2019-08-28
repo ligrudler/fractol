@@ -53,11 +53,15 @@ void	init_key(t_mlx *mlx)
 		if (mlx->fract == 2)
 			init_var_burning(mlx);
 	}
-	if (mlx->keyboard[KEY_Z])
+	/*if (mlx->keyboard[KEY_Z])
 	{
 		printf("%d\n", mlx->chgcolor);
-		mlx->chgcolor = 1;
-	}
+	//	mlx->chgcolor -= 1 ? -1 : mlx->chgcolor;
+		if (mlx->chgcolor == 1)
+			mlx->chgcolor = 0;
+		else
+			mlx->chgcolor++;
+	}*/
 }
 
 int			mouse_press(int button, int x, int y, void *param)
@@ -65,19 +69,23 @@ int			mouse_press(int button, int x, int y, void *param)
 	t_mlx	*pmlx;
 
 	pmlx = (t_mlx *)param;
-	if (button == 1)
+	if (button == 1 && x < WINX)
 	{
 		pmlx->x1 = (x / pmlx->zoom + pmlx->x1) - (x / (pmlx->zoom * 1.3	));
 		pmlx->y1 = (y / pmlx->zoom + pmlx->y1) - (y / (pmlx->zoom * 1.3));
 		pmlx->zoom = pmlx->zoom * 1.3;
 		pmlx->it_max++;
 	}
-	if (button == 2)
+	if (button == 2 && x < WINX)
 	{
 		pmlx->x1 = (x / pmlx->zoom + pmlx->x1) - (x / (pmlx->zoom / 1.3));
 		pmlx->y1 = (y / pmlx->zoom + pmlx->y1) - (y / (pmlx->zoom / 1.3));
 		pmlx->zoom = pmlx->zoom / 1.3;
 		pmlx->it_max--;
 	}
+	if (x >= 800 && y >= 500 && pmlx->chgcolor != 1)
+		pmlx->chgcolor++;
+	else
+		pmlx->chgcolor = 0;
 	return (0);
 }
