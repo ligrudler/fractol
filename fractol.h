@@ -15,6 +15,7 @@
 #include "keycode.h"
 #include "pthread.h"
 #include "math.h"
+#include "colorcode.h"
 
 # define WINX 800
 # define WINY 800
@@ -81,20 +82,3 @@ void			fill_palette(t_mlx *mlx);
 
 
 int				mouse_press(int button, int x, int y, void *param);
-
-# define JULIABROT_0		0x19071A
-# define JULIABROT_1		0x09012F
-# define JULIABROT_2		0x040449
-# define JULIABROT_3		0x000764
-# define JULIABROT_4		0x0C2C8A
-# define JULIABROT_5		0x1852B1
-# define JULIABROT_6		0x397DD1
-# define JULIABROT_7		0x86B5E5
-# define JULIABROT_8		0xD3ECF8
-# define JULIABROT_9		0xF1E9BF
-# define JULIABROT_10		0xF8C95F
-# define JULIABROT_11		0xFFAA00
-# define JULIABROT_12		0xCC8000
-# define JULIABROT_13		0x995700
-# define JULIABROT_14		0x6A3403
-# define JULIABROT_15		0x421E0F

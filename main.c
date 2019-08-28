@@ -67,6 +67,9 @@ int		main(int argc, char **argv)
 			ft_error();
 		mlx.canvas = mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.size_line, &mlx.endian);
 		print_legend(&mlx);
+		mlx_hook(mlx.win_ptr, KEYPRESS, KEYPRESSMASK, key_press, &mlx);
+		mlx_hook(mlx.win_ptr, KEYRELEASE, KEYRELEASEMASK, key_release, &mlx);
+		mlx_mouse_hook(mlx.win_ptr, mouse_press, &mlx);
 		if (mlx.fract == 0)
 		{
 			init_var(&mlx);
@@ -82,9 +85,6 @@ int		main(int argc, char **argv)
 			init_var_burning(&mlx);
 			mlx_loop_hook(mlx.mlx_ptr, burning_thread, &mlx);
 		}
-		mlx_hook(mlx.win_ptr, KEYPRESS, KEYPRESSMASK, key_press, &mlx);
-		mlx_hook(mlx.win_ptr, KEYRELEASE, KEYRELEASEMASK, key_release, &mlx);
-		mlx_mouse_hook(mlx.win_ptr, mouse_press, &mlx);
 		//mlx_hook(mlx.win_ptr, EV_MOUSE_PRESS, 0, mouse_press, &mlx);
 		mlx_loop(mlx.mlx_ptr);
 	}
