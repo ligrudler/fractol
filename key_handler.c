@@ -44,6 +44,15 @@ void	init_key(t_mlx *mlx)
 		mlx->x1 *= mlx->keyboard[KEY_LEFT] ? 1/1.1 : 1.1;
 	if ((mlx->keyboard[KEY_DOWN] && !mlx->keyboard[KEY_UP]) || (mlx->keyboard[KEY_UP] && !mlx->keyboard[KEY_DOWN]))
 		mlx->y1 *= mlx->keyboard[KEY_UP] ? 1/1.1 : 1.1;
+	if (mlx->keyboard[KEY_SPACEBAR])
+	{
+		if (mlx->fract == 0)
+			init_var(mlx);
+		if (mlx->fract == 1)
+			init_var_julia(mlx);
+		if (mlx->fract == 2)
+			init_var_burning(mlx);
+	}
 }
 
 int			mouse_press(int button, int x, int y, void *param)

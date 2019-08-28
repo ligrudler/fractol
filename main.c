@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-void	put_pixel(t_mlx *mlx, int color, int x, int y)
+void	put_pixel_to_img(t_mlx *mlx, int color)
 {
 	//printf("x = %d\n", mlx->x);
 	//printf("y = %d\n", mlx->y);

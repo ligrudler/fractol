@@ -56,7 +56,7 @@ typedef struct	s_mlx
 
 void			*mandelbrot(void *param);
 int				mandel_thread(t_mlx *pmlx);
-void			put_pixel(t_mlx *mlx, int color, int x, int y);
+void			put_pixel_to_img(t_mlx *mlx, int color);
 int				ft_which_frac(char **argv, t_mlx *mlx);
 void			draw_fract(t_mlx *mlx);
 

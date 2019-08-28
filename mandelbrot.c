@@ -39,9 +39,9 @@ void	mandel_calc(t_mlx *pmlx)
 		pmlx->it++;
 	}
 	if (pmlx->it >= pmlx->it_max)
-		put_pixel(pmlx, 0x000000, pmlx->x, pmlx->y);
+		put_pixel_to_img(pmlx, 0x000000);
 	else 
-		put_pixel(pmlx, pmlx->palette[pmlx->it % 16], pmlx->x, pmlx->y);
+		put_pixel_to_img(pmlx, pmlx->palette[pmlx->it % 16]);
 }
 
 void		*mandelbrot(void *param)
