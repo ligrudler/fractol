@@ -1,6 +1,30 @@
 
 #include "fractol.h"
 
+void	init_var(t_mlx *pmlx)
+{
+	pmlx->x = 0;
+	pmlx->y = 0;
+	pmlx->chgcolor = 0;
+	pmlx->it_max = 300;
+	pmlx->zoom = 250;
+	if (pmlx->fract == 0)
+	{
+		pmlx->x1 = -2.1;
+		pmlx->y1 = -1.5;
+	}
+	if (pmlx->fract == 1)
+	{
+		pmlx->x1 = -1.6;
+		pmlx->y1 = -1.6;
+	}
+	if (pmlx->fract == 2)
+	{
+		pmlx->x1 = -2.0;
+		pmlx->y1 = -1.8;
+	}
+}
+
 int		multi_thread(t_mlx *pmlx)
 {
 	t_mlx		tab[NBR_THREAD];

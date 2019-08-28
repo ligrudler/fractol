@@ -45,23 +45,7 @@ void	init_key(t_mlx *mlx)
 	if ((mlx->keyboard[KEY_DOWN] && !mlx->keyboard[KEY_UP]) || (mlx->keyboard[KEY_UP] && !mlx->keyboard[KEY_DOWN]))
 		mlx->y1 += mlx->keyboard[KEY_UP] ? 10 / mlx->zoom: -10 / mlx->zoom;
 	if (mlx->keyboard[KEY_SPACEBAR])
-	{
-		if (mlx->fract == 0)
-			init_var(mlx);
-		if (mlx->fract == 1)
-			init_var_julia(mlx);
-		if (mlx->fract == 2)
-			init_var_burning(mlx);
-	}
-	/*if (mlx->keyboard[KEY_Z])
-	{
-		printf("%d\n", mlx->chgcolor);
-	//	mlx->chgcolor -= 1 ? -1 : mlx->chgcolor;
-		if (mlx->chgcolor == 1)
-			mlx->chgcolor = 0;
-		else
-			mlx->chgcolor++;
-	}*/
+		init_var(mlx);
 }
 
 int			mouse_press(int button, int x, int y, void *param)
@@ -88,8 +72,14 @@ int			mouse_press(int button, int x, int y, void *param)
 	else if (x > 1155 && y > 467 && x < 1190 && y < 492)
 		pmlx->chgcolor = 0;
 	if (x > 800 && y < 150 && pmlx->fract != 2)
+	{
 		pmlx->fract++;
+		init_var(pmlx);
+	}
 	else if ( x > 800 && y < 150)
+	{
 		pmlx->fract = 0;
+		init_var(pmlx);
+	}
 	return (0);
 }

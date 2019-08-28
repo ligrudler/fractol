@@ -12,17 +12,6 @@
 
 #include "fractol.h"
 
-void	init_var_julia(t_mlx *pmlx)
-{
-	pmlx->x = 0;
-	pmlx->y = 0;
-	pmlx->x1 = -1.6;
-	pmlx->y1 = -1.6;
-	pmlx->it_max = 300;
-	pmlx->zoom = 250;
-	pmlx->chgcolor = 0;
-}
-
 void	julia_calc(t_mlx *pmlx)
 {
 	double tmp;

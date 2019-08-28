@@ -12,17 +12,6 @@
 
 #include "fractol.h"
 
-void	init_var(t_mlx *pmlx)
-{
-	pmlx->x = 0;
-	pmlx->y = 0;
-	pmlx->x1 = -2.1;
-	pmlx->y1 = -1.2;
-	pmlx->it_max = 200;
-	pmlx->zoom = 300;
-	pmlx->chgcolor = 0;
-}
-
 void	mandel_calc(t_mlx *pmlx)
 {
 	double temp;

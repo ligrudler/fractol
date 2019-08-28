@@ -67,13 +67,11 @@ int				key_release(int key, void *param);
 void			init_key(t_mlx *mlx);
 
 void			init_var(t_mlx *pmlx);
-void			init_var_julia(t_mlx *pmlx);
 
 void			*julia(void *param);
 
 void			*burning(void *param);
 void			burning_calc(t_mlx *pmlx);
-void			init_var_burning(t_mlx *pmlx);
 
 void			print_legend(t_mlx *mlx);
 void			fill_palette(t_mlx *mlx);

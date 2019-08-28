@@ -12,17 +12,6 @@
 
 #include "fractol.h"
 
-void	init_var_burning(t_mlx *pmlx)
-{
-	pmlx->x = 0;
-	pmlx->y = 0;
-	pmlx->x1 = -2.0;
-	pmlx->y1 = -1.8;
-	pmlx->it_max = 200;
-	pmlx->zoom = 250;
-	pmlx->chgcolor = 0;
-}
-
 void	burning_calc(t_mlx *pmlx)
 {
 	double temp;
