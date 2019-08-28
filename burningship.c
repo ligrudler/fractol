@@ -16,11 +16,10 @@ void	init_var_burning(t_mlx *pmlx)
 {
 	pmlx->x = 0;
 	pmlx->y = 0;
-	pmlx->x1 = -2.1;
-	pmlx->y1 = -1.7;
+	pmlx->x1 = -2.0;
+	pmlx->y1 = -1.8;
 	pmlx->it_max = 200;
-	pmlx->color = 265;
-	pmlx->zoom = 300;
+	pmlx->zoom = 250;
 }
 
 void	burning_calc(t_mlx *pmlx)
@@ -42,7 +41,7 @@ void	burning_calc(t_mlx *pmlx)
 	if (pmlx->it >= pmlx->it_max)
 		put_pixel(pmlx, 0x000000, pmlx->x, pmlx->y);
 	else 
-		put_pixel(pmlx, pmlx->color, pmlx->x, pmlx->y);
+		put_pixel(pmlx, pmlx->palette[pmlx->it % 4], pmlx->x, pmlx->y);
 }
 
 void		*burning(void *param)

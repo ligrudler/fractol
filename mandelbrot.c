@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 18:41:54 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/28 11:57:45 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:56:40 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	init_var(t_mlx *pmlx)
 	pmlx->x1 = -2.1;
 	pmlx->y1 = -1.2;
 	pmlx->it_max = 200;
-	pmlx->color = 265;
 	pmlx->zoom = 300;
 }
 
@@ -42,7 +41,7 @@ void	mandel_calc(t_mlx *pmlx)
 	if (pmlx->it >= pmlx->it_max)
 		put_pixel(pmlx, 0x000000, pmlx->x, pmlx->y);
 	else 
-		put_pixel(pmlx, pmlx->color, pmlx->x, pmlx->y);
+		put_pixel(pmlx, pmlx->palette[pmlx->it % 4], pmlx->x, pmlx->y);
 }
 
 void		*mandelbrot(void *param)

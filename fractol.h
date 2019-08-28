@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/28 11:54:04 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/28 16:52:35 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@
 #include "pthread.h"
 #include "math.h"
 
-# define WINX 1000
-# define WINY 1000
+# define WINX 800
+# define WINY 800
+# define WINALL 1200
 # define NBR_THREAD 4
-# define WIN_THREAD 250
+# define WIN_THREAD 200
 
 typedef struct	s_mlx
 {
@@ -50,6 +51,7 @@ typedef struct	s_mlx
 	double		zoom;
 	double		temp;
 
+	int		palette[16];
 }				t_mlx;
 
 void			*mandelbrot(void *param);
@@ -72,6 +74,9 @@ int				burning_thread(t_mlx *pmlx);
 void			*burning(void *param);
 void			burning_calc(t_mlx *pmlx);
 void			init_var_burning(t_mlx *pmlx);
+
+void			print_legend(t_mlx *mlx);
+void			fill_palette(t_mlx *mlx);
 
 
 int				mouse_press(int button, int x, int y, void *param);

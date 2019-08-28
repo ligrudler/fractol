@@ -16,11 +16,10 @@ void	init_var_julia(t_mlx *pmlx)
 {
 	pmlx->x = 0;
 	pmlx->y = 0;
-	pmlx->x1 = -1.7;
-	pmlx->y1 = -1.4;
+	pmlx->x1 = -1.6;
+	pmlx->y1 = -1.6;
 	pmlx->it_max = 300;
-	pmlx->color = 265;
-	pmlx->zoom = 300;
+	pmlx->zoom = 250;
 }
 
 void	julia_calc(t_mlx *pmlx)
@@ -55,7 +54,7 @@ void		*julia(void *param)
 			if (pmlx->it >= pmlx->it_max)
 				put_pixel(pmlx, 0x000000, pmlx->x, pmlx->y);
 			else 
-				put_pixel(pmlx, pmlx->color, pmlx->x, pmlx->y);
+				put_pixel(pmlx, pmlx->palette[pmlx->it % 4], pmlx->x, pmlx->y);
 			pmlx->y++;
 		}
 		pmlx->x++;
