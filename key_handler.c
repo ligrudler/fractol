@@ -40,7 +40,6 @@ void	init_key(t_mlx *mlx)
 		//mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr); abort trap 6
 		exit(0);
 	}
-	printf("%f\n", mlx->zoom);
 	if ((mlx->keyboard[KEY_LEFT] && !mlx->keyboard[KEY_RIGHT]) || (mlx->keyboard[KEY_RIGHT] && !mlx->keyboard[KEY_LEFT]))
 		mlx->x1 += mlx->keyboard[KEY_LEFT] ? 10 / mlx->zoom: -10 / mlx->zoom;
 	if ((mlx->keyboard[KEY_DOWN] && !mlx->keyboard[KEY_UP]) || (mlx->keyboard[KEY_UP] && !mlx->keyboard[KEY_DOWN]))
@@ -53,6 +52,11 @@ void	init_key(t_mlx *mlx)
 			init_var_julia(mlx);
 		if (mlx->fract == 2)
 			init_var_burning(mlx);
+	}
+	if (mlx->keyboard[KEY_Z])
+	{
+		printf("%d\n", mlx->chgcolor);
+		mlx->chgcolor = 1;
 	}
 }
 

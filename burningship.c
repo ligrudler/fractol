@@ -20,6 +20,7 @@ void	init_var_burning(t_mlx *pmlx)
 	pmlx->y1 = -1.8;
 	pmlx->it_max = 200;
 	pmlx->zoom = 250;
+	pmlx->chgcolor = 0;
 }
 
 void	burning_calc(t_mlx *pmlx)
@@ -71,6 +72,7 @@ int		burning_thread(t_mlx *pmlx)
 	i = 0;
 	ft_bzero(pmlx->canvas, WINX * WINY * 4);
 	init_key(pmlx);
+	fill_palette(pmlx);
 	while (i < NBR_THREAD)
 	{
 		ft_memcpy((void *)&tab[i], (void *)pmlx, sizeof(t_mlx));

@@ -52,6 +52,7 @@ typedef struct	s_mlx
 	double		temp;
 
 	int		palette[16];
+	int		chgcolor;
 }				t_mlx;
 
 void			*mandelbrot(void *param);

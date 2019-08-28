@@ -67,7 +67,6 @@ int		main(int argc, char **argv)
 			ft_error();
 		mlx.canvas = mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.size_line, &mlx.endian);
 		print_legend(&mlx);
-		fill_palette(&mlx);
 		if (mlx.fract == 0)
 		{
 			init_var(&mlx);
