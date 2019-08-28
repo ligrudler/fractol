@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 22:59:01 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/27 23:13:39 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/28 11:41:22 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	init_var_burning(t_mlx *pmlx)
 	pmlx->x = 0;
 	pmlx->y = 0;
 	pmlx->x1 = -2.1;
-	pmlx->y1 = -1.2;
-	pmlx->it_max = 300;
-	pmlx->color = 265;
+	pmlx->y1 = -1.7;
+	pmlx->it_max = 200;
+	pmlx->color = 270;
 	pmlx->zoom = 300;
 }
 
@@ -34,9 +34,9 @@ void	burning_calc(t_mlx *pmlx)
 	pmlx->it = 0;
 	while (pmlx->z_r * pmlx->z_r + pmlx->z_i * pmlx->z_i < 4 && pmlx->it < pmlx->it_max)
 	{
-		pmlx->temp = pmlx->z_r * pmlx->z_r - pmlx->z_i * pmlx->z_i + pmlx->c_r;
-		pmlx->z_i = fabs(2 * pmlx->z_i * pmlx->z_r) + pmlx->c_i;
-		pmlx->z_r = pmlx->temp;
+		pmlx->temp = pmlx->z_r;
+		pmlx->z_r = pmlx->z_r * pmlx->z_r - pmlx->z_i * pmlx->z_i + pmlx->c_r;
+		pmlx->z_i = 2 * fabs(pmlx->z_i * pmlx->temp) + pmlx->c_i;
 		pmlx->it++;
 	}
 	if (pmlx->it >= pmlx->it_max)
@@ -51,7 +51,6 @@ void		*burning(void *param)
 
 	pmlx = (t_mlx *)param;
 	ft_bzero(pmlx->canvas, WINX * WINY * 4);
-	init_key(pmlx);
 	while (pmlx->x < WINX)
 	{
 		pmlx->y = 0;
@@ -72,6 +71,7 @@ int		burning_thread(t_mlx *pmlx)
 	int			i;
 
 	i = 0;
+	init_key(pmlx);
 	while (i < NBR_THREAD)
 	{
 		ft_memcpy((void *)&tab[i], (void *)pmlx, sizeof(t_mlx));

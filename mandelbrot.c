@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 18:41:54 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/27 12:20:21 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/28 11:30:59 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	init_var(t_mlx *pmlx)
 	pmlx->x1 = -2.1;
 	pmlx->y1 = -1.2;
 	pmlx->it_max = 200;
-	pmlx->color = 265;
+	pmlx->color = 256;
 	pmlx->zoom = 300;
 }
 
@@ -51,7 +51,6 @@ void		*mandelbrot(void *param)
 
 	pmlx = (t_mlx *)param;
 	ft_bzero(pmlx->canvas, WINX * WINY * 4);
-	init_key(pmlx);
 	while (pmlx->x < WINX)
 	{
 		pmlx->y = 0;
@@ -72,6 +71,7 @@ int		mandel_thread(t_mlx *pmlx)
 	int			i;
 
 	i = 0;
+	init_key(pmlx);
 	while (i < NBR_THREAD)
 	{
 		ft_memcpy((void *)&tab[i], (void *)pmlx, sizeof(t_mlx));

@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 23:23:06 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/27 12:05:05 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/28 11:40:43 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	init_var_julia(t_mlx *pmlx)
 {
 	pmlx->x = 0;
 	pmlx->y = 0;
-	pmlx->x1 = -1.8;
+	pmlx->x1 = -1.7;
 	pmlx->y1 = -1.4;
 	pmlx->it_max = 300;
 	pmlx->color = 265;
@@ -47,7 +47,6 @@ void		*julia(void *param)
 
 	pmlx = (t_mlx *)param;
 	ft_bzero(pmlx->canvas, WINX * WINY * 4);
-	init_key(pmlx);
 	while(pmlx->x < WINX)
 	{
 		pmlx->y = 0;
@@ -72,6 +71,7 @@ int			julia_thread(t_mlx *pmlx)
 	int			i;
 
 	i = 0;
+	init_key(pmlx);
 	while (i < NBR_THREAD)
 	{
 		ft_memcpy((void *)&tab[i], (void *)pmlx, sizeof(t_mlx));

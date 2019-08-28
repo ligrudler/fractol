@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/27 23:03:02 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/28 11:26:50 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int		main(int argc, char **argv)
 		}
 		if (mlx.fract == 2)
 		{
-			init_var_julia(&mlx);
+			init_var_burning(&mlx);
 			mlx_loop_hook(mlx.mlx_ptr, burning_thread, &mlx);
 		}
 		mlx_hook(mlx.win_ptr, KEYPRESS, KEYPRESSMASK, key_press, &mlx);
