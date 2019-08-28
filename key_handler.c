@@ -87,7 +87,9 @@ int			mouse_press(int button, int x, int y, void *param)
 		pmlx->chgcolor++;
 	else if (x > 1155 && y > 467 && x < 1190 && y < 492)
 		pmlx->chgcolor = 0;
-	/*if (x > 1000 && y > 1000)
-		pmlx->fract = 0;*/
+	if (x > 800 && y < 150 && pmlx->fract != 2)
+		pmlx->fract++;
+	else if ( x > 800 && y < 150)
+		pmlx->fract = 0;
 	return (0);
 }

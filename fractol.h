@@ -57,7 +57,7 @@ typedef struct	s_mlx
 }				t_mlx;
 
 void			*mandelbrot(void *param);
-int				mandel_thread(t_mlx *pmlx);
+int				multi_thread(t_mlx *pmlx);
 void			put_pixel_to_img(t_mlx *mlx, int color);
 int				ft_which_frac(char **argv, t_mlx *mlx);
 void			draw_fract(t_mlx *mlx);
@@ -70,9 +70,7 @@ void			init_var(t_mlx *pmlx);
 void			init_var_julia(t_mlx *pmlx);
 
 void			*julia(void *param);
-int				julia_thread(t_mlx *pmlx);
 
-int				burning_thread(t_mlx *pmlx);
 void			*burning(void *param);
 void			burning_calc(t_mlx *pmlx);
 void			init_var_burning(t_mlx *pmlx);
