@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:56 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/29 23:04:59 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/29 23:46:22 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,34 @@
 
 void	init_var(t_mlx *pmlx)
 {
-	pmlx->x = 0;
-	pmlx->y = 0;
+	pmlx->al.x = 0;
+	pmlx->al.y = 0;
 	pmlx->clr.chgcolor = 0;
-	pmlx->it_max = 200;
-	pmlx->zoom = 250;
+	pmlx->al.it_max = 200;
+	pmlx->al.zoom = 250;
 	if (pmlx->fract == 0)
 	{
-		pmlx->x1 = -2.1;
-		pmlx->y1 = -1.5;
+		pmlx->al.x1 = -2.1;
+		pmlx->al.y1 = -1.5;
 	}
 	if (pmlx->fract == 1)
 	{
-		pmlx->x1 = -1.6;
-		pmlx->y1 = -1.6;
+		pmlx->al.x1 = -1.6;
+		pmlx->al.y1 = -1.6;
 	}
 	if (pmlx->fract == 2)
 	{
-		pmlx->x1 = -2.0;
-		pmlx->y1 = -1.8;
+		pmlx->al.x1 = -2.0;
+		pmlx->al.y1 = -1.8;
 	}
+}
+
+void	first_step(t_mlx *mlx)
+{
+	ft_bzero(mlx->i.canvas, WINX * WINY * 4);
+	init_key(mlx);
+	mouse_hook(mlx);
+	fill_palette(mlx);
 }
 
 int		multi_thread(t_mlx *pmlx)
@@ -43,15 +51,12 @@ int		multi_thread(t_mlx *pmlx)
 	int			i;
 
 	i = 0;
-	ft_bzero(pmlx->i.canvas, WINX * WINY * 4);
-	init_key(pmlx);
-	mouse_hook(pmlx);
-	fill_palette(pmlx);
+	first_step(pmlx);
 	while (i < NBR_THREAD)
 	{
 		ft_memcpy((void *)&tab[i], (void *)pmlx, sizeof(t_mlx));
-		tab[i].y = WIN_THREAD * i;
-		tab[i].y_max = WIN_THREAD * (i + 1);
+		tab[i].al.y = WIN_THREAD * i;
+		tab[i].al.y_max = WIN_THREAD * (i + 1);
 		if (tab[i].fract == 0)
 			pthread_create(&t[i], NULL, mandelbrot, &tab[i]);	/* a proteger ??*/	
 		if (tab[i].fract == 1)

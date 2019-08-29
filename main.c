@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/29 23:04:38 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/29 23:42:10 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,22 @@
 
 void	put_pixel_to_img(t_mlx *mlx, int color)
 {
-	if (mlx->x <= WINX && mlx->y <= WINY)
-		*(int *)&mlx->i.canvas[mlx->y * mlx->i.size_line + mlx->x * 4] = color;
+	if (mlx->al.x <= WINX && mlx->al.y <= WINY)
+		*(int *)&mlx->i.canvas[mlx->al.y * mlx->i.size_line + mlx->al.x * 4] 
+			= color;
+}
+
+void	init_mlx(t_mlx *mlx)
+{
+	if ((mlx->mlx_ptr = mlx_init()) == NULL)
+		ft_error();
+	if ((mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WINALL, WINY, "fractol")) 
+		== NULL)
+		ft_error();
+	if ((mlx->i.img = mlx_new_image(mlx->mlx_ptr, WINX, WINY)) == NULL)
+		ft_error();
+	mlx->i.canvas = mlx_get_data_addr(mlx->i.img, &mlx->i.bpp, &mlx->i.size_line,
+		 &mlx->i.endian);
 }
 
 int	ft_which_frac(char **argv, t_mlx *mlx)
@@ -43,13 +57,7 @@ int		main(int argc, char **argv)
 	{
 		if (ft_which_frac(argv, &mlx) == 0)
 			return (0);
-		if ((mlx.mlx_ptr = mlx_init()) == NULL)
-			ft_error();
-		if ((mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, WINALL, WINY, "fractol")) == NULL)
-			ft_error();
-		if ((mlx.i.img = mlx_new_image(mlx.mlx_ptr, WINX, WINY)) == NULL)
-			ft_error();
-		mlx.i.canvas = mlx_get_data_addr(mlx.i.img, &mlx.i.bpp, &mlx.i.size_line, &mlx.i.endian);
+		init_mlx(&mlx);
 		print_legend(&mlx);
 		init_var(&mlx);
 		mlx_loop_hook(mlx.mlx_ptr, multi_thread, &mlx);

@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:12:19 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/29 20:39:57 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/29 23:25:36 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,16 +78,16 @@
 # define PURPL_14	0x411D0F
 # define PURPL_15	0x18110f
 
-# define BLUEINV_15		0x19071A
-# define BLUEINV_14		0x09012F
-# define BLUEINV_13		0x040449
-# define BLUEINV_12		0x000764
-# define BLUEINV_11		0x0C2C8A
-# define BLUEINV_10		0x1852B1
-# define BLUEINV_9		0x397DD1
-# define BLUEINV_8		0x86B5E5
-# define BLUEINV_7		0xD3ECF8
-# define BLUEINV_6		0xF1E9BF
+# define BLUEINV_15	0x19071A
+# define BLUEINV_14	0x09012F
+# define BLUEINV_13	0x040449
+# define BLUEINV_12	0x000764
+# define BLUEINV_11	0x0C2C8A
+# define BLUEINV_10	0x1852B1
+# define BLUEINV_9	0x397DD1
+# define BLUEINV_8	0x86B5E5
+# define BLUEINV_7	0xD3ECF8
+# define BLUEINV_6	0xF1E9BF
 # define BLUEINV_5	0xF8C95F
 # define BLUEINV_4	0xFFAA00
 # define BLUEINV_3	0xCC8000
