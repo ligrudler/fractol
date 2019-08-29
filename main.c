@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/29 17:41:18 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/29 23:04:38 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	put_pixel_to_img(t_mlx *mlx, int color)
 {
 	if (mlx->x <= WINX && mlx->y <= WINY)
-		*(int *)&mlx->canvas[mlx->y * mlx->size_line + mlx->x * 4] = color;
+		*(int *)&mlx->i.canvas[mlx->y * mlx->i.size_line + mlx->x * 4] = color;
 }
 
 int	ft_which_frac(char **argv, t_mlx *mlx)
@@ -47,9 +47,9 @@ int		main(int argc, char **argv)
 			ft_error();
 		if ((mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, WINALL, WINY, "fractol")) == NULL)
 			ft_error();
-		if ((mlx.img = mlx_new_image(mlx.mlx_ptr, WINX, WINY)) == NULL)
+		if ((mlx.i.img = mlx_new_image(mlx.mlx_ptr, WINX, WINY)) == NULL)
 			ft_error();
-		mlx.canvas = mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.size_line, &mlx.endian);
+		mlx.i.canvas = mlx_get_data_addr(mlx.i.img, &mlx.i.bpp, &mlx.i.size_line, &mlx.i.endian);
 		print_legend(&mlx);
 		init_var(&mlx);
 		mlx_loop_hook(mlx.mlx_ptr, multi_thread, &mlx);

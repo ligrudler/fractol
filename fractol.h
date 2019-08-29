@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/29 17:19:19 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/29 23:01:13 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,38 @@
 # define NBR_THREAD 4
 # define WIN_THREAD 200
 
+typedef struct	s_img
+{
+	void		*img;
+	char		*canvas;
+
+	int			bpp;
+	int			size_line;
+	int			endian;
+}				t_img;
+
+typedef struct	s_mouse
+{
+	int		x;
+	int		y;
+	int		tmpx;
+	int		tmpy;
+	int		mousebutton;
+	char	mouseboard[5];
+}				t_mouse;
+
+typedef struct	s_color
+{
+	int			palette[16];
+	int			chgcolor;
+}				t_color;
+
 typedef struct	s_mlx
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
 
-	void		*img;
-	char		*canvas;
-	int			bpp;
-	int			size_line;
-	int			endian;
+	
 
 	int			fract;
 	char		keyboard[512];
@@ -43,7 +65,6 @@ typedef struct	s_mlx
 	int			it;
 	double		x1;
 	double		y1;
-	int			color;
 	double		c_i;
 	double		c_r;
 	double		z_i;
@@ -52,16 +73,9 @@ typedef struct	s_mlx
 	double		zoom;
 	double		temp;
 
-	int		palette[16];
-	int		chgcolor;
-
-	int		mousex;
-	int		mousey;
-	int		mousebutton;
-	char	mouseboard[5];
-
-	int		tmpx;
-	int		tmpy;
+	t_img		i;
+	t_color		clr;
+	t_mouse		m;
 }				t_mlx;
 
 void			*mandelbrot(void *param);
@@ -89,4 +103,5 @@ int				mouse_press(int button, int x, int y, void *param);
 int				mouse_release(int button, int x, int y, void *param);
 void			mouse_hook(t_mlx *mlx);
 int				mouse_chg(int button, int x, int y, void *param);
+void			zoom_dezoom(t_mlx *mlx);
 

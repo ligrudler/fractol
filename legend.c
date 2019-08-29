@@ -7,7 +7,7 @@ void	color_box_legend(t_mlx *mlx)
 	int y;
 
 	y = 0;
-	while (y <= WINALL)
+	while (y <= WINY)
 	{
 		x = WINX;
 		while (x <= WINALL)
@@ -57,4 +57,8 @@ void	print_legend(t_mlx *mlx)
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 960, 415, 0xFFFFFF, "COMMANDS");
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 810, 470, 0xFFFFFF, "Changer de couleur ? c'est ici =>");
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 810, 495, 0xFFFFFF, "Changer de fractale ? c'est ici =>");
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 810, 520, 0xFFFFFF, "Pour zoomer : click droit");
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 810, 545, 0xFFFFFF, "Pour bouger : flèches directionnelles");
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 810, 570, 0xFFFFFF, "Reset : barre d'espace");
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 810, 595, 0xFFFFFF, "Quitter : echap");
 }

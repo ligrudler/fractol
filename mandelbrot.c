@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 18:41:54 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/28 16:56:40 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/29 23:07:48 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	mandel_calc(t_mlx *pmlx)
 {
-	double temp;
-
 	pmlx->c_r = pmlx->x / pmlx->zoom + pmlx->x1;
 	pmlx->c_i = pmlx->y / pmlx->zoom + pmlx->y1;
 	pmlx->z_r = 0;
@@ -23,15 +21,15 @@ void	mandel_calc(t_mlx *pmlx)
 	pmlx->it = 0;
 	while (pmlx->z_r * pmlx->z_r + pmlx->z_i * pmlx->z_i < 4 && pmlx->it < pmlx->it_max)
 	{
-		temp = pmlx->z_r;
+		pmlx->temp = pmlx->z_r;
 		pmlx->z_r = pmlx->z_r * pmlx->z_r - pmlx->z_i * pmlx->z_i + pmlx->c_r;
-		pmlx->z_i = 2 * pmlx->z_i * temp + pmlx->c_i;
+		pmlx->z_i = 2 * pmlx->z_i * pmlx->temp + pmlx->c_i;
 		pmlx->it++;
 	}
 	if (pmlx->it >= pmlx->it_max)
 		put_pixel_to_img(pmlx, 0x000000);
 	else 
-		put_pixel_to_img(pmlx, pmlx->palette[pmlx->it % 16]);
+		put_pixel_to_img(pmlx, pmlx->clr.palette[pmlx->it % 16]);
 }
 
 void		*mandelbrot(void *param)

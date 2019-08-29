@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:56 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/29 17:12:01 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/29 23:04:59 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	init_var(t_mlx *pmlx)
 {
 	pmlx->x = 0;
 	pmlx->y = 0;
-	pmlx->chgcolor = 0;
-	pmlx->it_max = 300;
+	pmlx->clr.chgcolor = 0;
+	pmlx->it_max = 200;
 	pmlx->zoom = 250;
 	if (pmlx->fract == 0)
 	{
@@ -43,7 +43,7 @@ int		multi_thread(t_mlx *pmlx)
 	int			i;
 
 	i = 0;
-	ft_bzero(pmlx->canvas, WINX * WINY * 4);
+	ft_bzero(pmlx->i.canvas, WINX * WINY * 4);
 	init_key(pmlx);
 	mouse_hook(pmlx);
 	fill_palette(pmlx);
@@ -62,6 +62,6 @@ int		multi_thread(t_mlx *pmlx)
 	}
 	while (i--)
 		pthread_join(t[i], NULL);
-	mlx_put_image_to_window(pmlx->mlx_ptr, pmlx->win_ptr, pmlx->img, 0, 0);
+	mlx_put_image_to_window(pmlx->mlx_ptr, pmlx->win_ptr, pmlx->i.img, 0, 0);
 	return (0);
 }
