@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/29 17:03:41 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/29 17:19:19 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,9 @@ typedef struct	s_mlx
 	int		mousey;
 	int		mousebutton;
 	char	mouseboard[5];
+
+	int		tmpx;
+	int		tmpy;
 }				t_mlx;
 
 void			*mandelbrot(void *param);

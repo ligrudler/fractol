@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/29 16:57:06 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/29 17:12:36 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ int		main(int argc, char **argv)
 		mlx_hook(mlx.win_ptr, KEYRELEASE, KEYRELEASEMASK, key_release, &mlx);
 		mlx_hook(mlx.win_ptr, EV_MOUSE_PRESS, 0, mouse_press, &mlx);
 		mlx_hook(mlx.win_ptr, EV_MOUSE_RELEA, 0, mouse_release, &mlx);
-	//	mlx_mouse_hook(mlx.win_ptr, mouse_chg, &mlx);
 		mlx_loop(mlx.mlx_ptr);
 	}
 	else
