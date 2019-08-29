@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:14 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/29 17:21:35 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/29 17:39:12 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,28 +43,28 @@ void		mouse_hook(t_mlx *mlx)
 {
 	if (mlx->mouseboard[mlx->mousebutton] && mlx->mousebutton == 1 && mlx->mousex < WINX)
 	{
-		mlx->x1 = (mlx->mousex / mlx->zoom + mlx->x1) - (mlx->mousex / (mlx->zoom * 1.3	));
-		mlx->y1 = (mlx->mousey / mlx->zoom + mlx->y1) - (mlx->mousey / (mlx->zoom * 1.3));
-		mlx->zoom = mlx->zoom * 1.3;
+		mlx->x1 = (mlx->mousex / mlx->zoom + mlx->x1) - (mlx->mousex / (mlx->zoom * 1.1));
+		mlx->y1 = (mlx->mousey / mlx->zoom + mlx->y1) - (mlx->mousey / (mlx->zoom * 1.1));
+		mlx->zoom = mlx->zoom * 1.1;
 		mlx->it_max++;
 	}
 	if (mlx->mouseboard[mlx->mousebutton] && mlx->mousebutton == 2 && mlx->mousex < WINX)
 	{
-		mlx->x1 = (mlx->mousex / mlx->zoom + mlx->x1) - (mlx->mousex / (mlx->zoom / 1.3));
-		mlx->y1 = (mlx->mousey / mlx->zoom + mlx->y1) - (mlx->mousey / (mlx->zoom / 1.3));
-		mlx->zoom = mlx->zoom / 1.3;
+		mlx->x1 = (mlx->mousex / mlx->zoom + mlx->x1) - (mlx->mousex / (mlx->zoom / 1.1));
+		mlx->y1 = (mlx->mousey / mlx->zoom + mlx->y1) - (mlx->mousey / (mlx->zoom / 1.1));
+		mlx->zoom = mlx->zoom / 1.1;
 		mlx->it_max--;
 	}
-	if (mlx->tmpx > 1155 && mlx->tmpy > 467 && mlx->tmpx < 1190 && mlx->tmpy < 492 && mlx->chgcolor != 2)
+	if (mlx->tmpx > 1155 && mlx->tmpy > 469 && mlx->tmpx < 1188 && mlx->tmpy < 490 && mlx->chgcolor != 2)
 		mlx->chgcolor++;
-	else if (mlx->tmpx > 1155 && mlx->tmpy > 467 && mlx->tmpx < 1190 && mlx->tmpy < 492)
+	else if (mlx->tmpx > 1155 && mlx->tmpy > 469 && mlx->tmpx < 1188 && mlx->tmpy < 490)
 		mlx->chgcolor = 0;
-	if (mlx->tmpx> 800 && mlx->tmpy < 150 && mlx->fract != 2 && mlx->tmpy!= 0)
+	if (mlx->tmpx > 1155 && mlx->tmpy < 515 && mlx->tmpx < 1188 && mlx->tmpy > 494 && mlx->fract != 2 && mlx->tmpy!= 0)
 	{
 		mlx->fract++;
 		init_var(mlx);
 	}
-	else if (mlx->tmpx > 800 && mlx->tmpy < 150 && mlx->tmpy != 0)
+	else if (mlx->tmpx > 1155 && mlx->tmpy < 515 && mlx->tmpx < 1188 && mlx->tmpy > 494 && mlx->tmpy != 0)
 	{
 		mlx->fract = 0;
 		init_var(mlx);
