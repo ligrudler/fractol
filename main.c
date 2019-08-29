@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/28 16:41:19 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/29 16:57:06 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	put_pixel_to_img(t_mlx *mlx, int color)
 {
-	//printf("x = %d\n", mlx->x);
-	//printf("y = %d\n", mlx->y);
 	if (mlx->x <= WINX && mlx->y <= WINY)
 		*(int *)&mlx->canvas[mlx->y * mlx->size_line + mlx->x * 4] = color;
 }
@@ -37,20 +35,6 @@ int	ft_which_frac(char **argv, t_mlx *mlx)
 
 }
 
-/*void	draw_fract(t_mlx *mlx)
-{
-	if (mlx.fract == 0)
-		{
-			init_var(&mlx);
-			mlx_loop_hook(mlx.mlx_ptr, mandel_thread, &mlx);
-		}
-		if (mlx.fract == 1)
-		{
-			init_var_julia(&mlx);
-			mlx_loop_hook(mlx.mlx_ptr, julia_thread, &mlx);
-		}
-}*/
-
 int		main(int argc, char **argv)
 {
 	t_mlx	mlx;
@@ -71,8 +55,9 @@ int		main(int argc, char **argv)
 		mlx_loop_hook(mlx.mlx_ptr, multi_thread, &mlx);
 		mlx_hook(mlx.win_ptr, KEYPRESS, KEYPRESSMASK, key_press, &mlx);
 		mlx_hook(mlx.win_ptr, KEYRELEASE, KEYRELEASEMASK, key_release, &mlx);
-		mlx_mouse_hook(mlx.win_ptr, mouse_press, &mlx);
-		//mlx_hook(mlx.win_ptr, EV_MOUSE_PRESS, 0, mouse_press, &mlx);
+		mlx_hook(mlx.win_ptr, EV_MOUSE_PRESS, 0, mouse_press, &mlx);
+		mlx_hook(mlx.win_ptr, EV_MOUSE_RELEA, 0, mouse_release, &mlx);
+	//	mlx_mouse_hook(mlx.win_ptr, mouse_chg, &mlx);
 		mlx_loop(mlx.mlx_ptr);
 	}
 	else

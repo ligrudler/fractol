@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/28 16:52:35 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/29 17:03:41 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,11 @@ typedef struct	s_mlx
 
 	int		palette[16];
 	int		chgcolor;
+
+	int		mousex;
+	int		mousey;
+	int		mousebutton;
+	char	mouseboard[5];
 }				t_mlx;
 
 void			*mandelbrot(void *param);
@@ -78,3 +83,7 @@ void			fill_palette(t_mlx *mlx);
 
 
 int				mouse_press(int button, int x, int y, void *param);
+int				mouse_release(int button, int x, int y, void *param);
+void			mouse_hook(t_mlx *mlx);
+int				mouse_chg(int button, int x, int y, void *param);
+

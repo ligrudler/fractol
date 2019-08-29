@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 19:12:43 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/28 11:43:14 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/29 17:08:28 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,33 +53,55 @@ int			mouse_press(int button, int x, int y, void *param)
 	t_mlx	*pmlx;
 
 	pmlx = (t_mlx *)param;
-	if (button == 1 && x < WINX)
-	{
-		pmlx->x1 = (x / pmlx->zoom + pmlx->x1) - (x / (pmlx->zoom * 1.3	));
-		pmlx->y1 = (y / pmlx->zoom + pmlx->y1) - (y / (pmlx->zoom * 1.3));
-		pmlx->zoom = pmlx->zoom * 1.3;
-		pmlx->it_max++;
-	}
-	if (button == 2 && x < WINX)
-	{
-		pmlx->x1 = (x / pmlx->zoom + pmlx->x1) - (x / (pmlx->zoom / 1.3));
-		pmlx->y1 = (y / pmlx->zoom + pmlx->y1) - (y / (pmlx->zoom / 1.3));
-		pmlx->zoom = pmlx->zoom / 1.3;
-		pmlx->it_max--;
-	}
-	if (x > 1155 && y > 467 && x < 1190 && y < 492 && pmlx->chgcolor != 2)
-		pmlx->chgcolor++;
-	else if (x > 1155 && y > 467 && x < 1190 && y < 492)
-		pmlx->chgcolor = 0;
-	if (x > 800 && y < 150 && pmlx->fract != 2)
-	{
-		pmlx->fract++;
-		init_var(pmlx);
-	}
-	else if ( x > 800 && y < 150)
-	{
-		pmlx->fract = 0;
-		init_var(pmlx);
-	}
+	pmlx->mousebutton = button;
+	pmlx->mousex = x;
+	pmlx->mousey = y;
+	pmlx->mouseboard[button] = 1;
 	return (0);
+}
+
+int		mouse_release(int button, int x, int y, void *param)
+{
+	t_mlx	*pmlx;
+
+	pmlx = (t_mlx *)param;
+	pmlx->mousex = x;
+	pmlx->mousey = y;
+	pmlx->mouseboard[button] = 0;
+	pmlx->mousebutton = 0;
+	return (0);
+}
+
+void		mouse_hook(t_mlx *mlx)
+{
+	if (mlx->mouseboard[mlx->mousebutton] && mlx->mousebutton == 1 && mlx->mousex < WINX)
+	{
+		mlx->x1 = (mlx->mousex / mlx->zoom + mlx->x1) - (mlx->mousex / (mlx->zoom * 1.3	));
+		mlx->y1 = (mlx->mousey / mlx->zoom + mlx->y1) - (mlx->mousey / (mlx->zoom * 1.3));
+		mlx->zoom = mlx->zoom * 1.3;
+		mlx->it_max++;
+	}
+	if (mlx->mouseboard[mlx->mousebutton] && mlx->mousebutton == 2 && mlx->mousex < WINX)
+	{
+		mlx->x1 = (mlx->mousex / mlx->zoom + mlx->x1) - (mlx->mousex / (mlx->zoom / 1.3));
+		mlx->y1 = (mlx->mousey / mlx->zoom + mlx->y1) - (mlx->mousey / (mlx->zoom / 1.3));
+		mlx->zoom = mlx->zoom / 1.3;
+		mlx->it_max--;
+	}
+	if (mlx->mousex > 1155 && mlx->mousey > 467 && mlx->mousex < 1190 && mlx->mousey < 492 && mlx->chgcolor != 2)
+		mlx->chgcolor++;
+	else if (mlx->mousex > 1155 && mlx->mousey > 467 && mlx->mousex < 1190 && mlx->mousey < 492)
+		mlx->chgcolor = 0;
+	if (mlx->mousex > 800 && mlx->mousey < 150 && mlx->fract != 2 && mlx->mousey != 0)
+	{
+		mlx->fract++;
+		init_var(mlx);
+	}
+	else if (mlx->mousex > 800 && mlx->mousey < 150 && mlx->mousey != 0)
+	{
+		mlx->fract = 0;
+		init_var(mlx);
+	}
+	mlx->mousex = 0;
+	mlx->mousey = 0;
 }

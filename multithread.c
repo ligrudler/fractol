@@ -34,6 +34,7 @@ int		multi_thread(t_mlx *pmlx)
 	i = 0;
 	ft_bzero(pmlx->canvas, WINX * WINY * 4);
 	init_key(pmlx);
+	mouse_hook(pmlx);
 	fill_palette(pmlx);
 	while (i < NBR_THREAD)
 	{
