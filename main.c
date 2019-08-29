@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/29 17:12:36 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/29 17:41:18 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		main(int argc, char **argv)
 			return (0);
 		if ((mlx.mlx_ptr = mlx_init()) == NULL)
 			ft_error();
-		if ((mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, WINALL, WINALL, "fractol")) == NULL)
+		if ((mlx.win_ptr = mlx_new_window(mlx.mlx_ptr, WINALL, WINY, "fractol")) == NULL)
 			ft_error();
 		if ((mlx.img = mlx_new_image(mlx.mlx_ptr, WINX, WINY)) == NULL)
 			ft_error();
