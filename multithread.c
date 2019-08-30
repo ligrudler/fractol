@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:56 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/30 21:28:54 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/30 22:46:32 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void	init_var(t_mlx *pmlx)
 	pmlx->clr.chgcolor = 0;
 	pmlx->al.it_max = 150;
 	pmlx->al.zoom = 250;
+	pmlx->stop = 0;
+	pmlx->m.j_x = 400;
+	pmlx->m.j_y = 400;
 	if (pmlx->fract == 0)
 	{
 		pmlx->al.x1 = -2.1;

@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/30 20:43:33 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/30 22:42:43 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ typedef struct	s_algo
 
 	int			y_max;
 	double		zoom;
-	double		offset_x;
-	double		offset_y;
 	double		temp;
 }				t_algo;
 
@@ -81,6 +79,7 @@ typedef struct	s_mlx
 
 	int			fract;
 	char		keyboard[512];
+	int			stop;
 	
 	t_algo		al;
 	t_img		i;

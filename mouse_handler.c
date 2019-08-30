@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:14 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/30 21:29:49 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/30 22:42:22 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int		motion_notify(int x, int y, void *param)
 	t_mlx *pmlx;
 
 	pmlx = (t_mlx *)param;
-	if (x < 0 || x >= WINX || y >= WINY || y < 0)
+	if (x < 0 || x >= WINX || y >= WINY || y < 0 || pmlx->stop == 1)
 		return (0);
 	pmlx->m.j_x = x;
 	pmlx->m.j_y = y;
