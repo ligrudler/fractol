@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/29 23:27:06 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/30 11:27:38 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define WINALL 1200
 # define NBR_THREAD 4
 # define WIN_THREAD 200
+# define OFF 0.0625
 
 typedef struct	s_img
 {
@@ -66,6 +67,8 @@ typedef struct	s_algo
 
 	int			y_max;
 	double		zoom;
+	double		offset_x;
+	double		offset_y;
 	double		temp;
 }				t_algo;
 
@@ -102,8 +105,5 @@ void			init_var(t_mlx *pmlx);
 void			print_legend(t_mlx *mlx);
 void			fill_palette(t_mlx *mlx);
 
-int				mouse_press(int button, int x, int y, void *param);
-int				mouse_release(int button, int x, int y, void *param);
-void			mouse_hook(t_mlx *mlx);
-int				mouse_chg(int button, int x, int y, void *param);
-void			zoom_dezoom(t_mlx *mlx);
+int				mouse_hook(int button, int x, int y, void *param);
+void			zoom_dezoom(int button, int x, int y, t_mlx *mlx);

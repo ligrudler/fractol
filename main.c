@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/29 23:42:10 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/30 11:24:11 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	init_mlx(t_mlx *mlx)
 	if ((mlx->win_ptr = mlx_new_window(mlx->mlx_ptr, WINALL, WINY, "fractol")) 
 		== NULL)
 		ft_error();
-	if ((mlx->i.img = mlx_new_image(mlx->mlx_ptr, WINX, WINY)) == NULL)
+	if ((mlx->i.img = mlx_new_image(mlx->mlx_ptr, WINX + 1, WINY)) == NULL)
 		ft_error();
 	mlx->i.canvas = mlx_get_data_addr(mlx->i.img, &mlx->i.bpp, &mlx->i.size_line,
 		 &mlx->i.endian);
@@ -63,8 +63,7 @@ int		main(int argc, char **argv)
 		mlx_loop_hook(mlx.mlx_ptr, multi_thread, &mlx);
 		mlx_hook(mlx.win_ptr, KEYPRESS, KEYPRESSMASK, key_press, &mlx);
 		mlx_hook(mlx.win_ptr, KEYRELEASE, KEYRELEASEMASK, key_release, &mlx);
-		mlx_hook(mlx.win_ptr, EV_MOUSE_PRESS, 0, mouse_press, &mlx);
-		mlx_hook(mlx.win_ptr, EV_MOUSE_RELEA, 0, mouse_release, &mlx);
+		mlx_mouse_hook(mlx.win_ptr, mouse_hook, &mlx);
 		mlx_loop(mlx.mlx_ptr);
 	}
 	else
