@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 23:23:06 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/30 22:41:29 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/31 01:00:00 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void		*julia(void *param)
 		{
 			julia_calc(pmlx);
 			if (pmlx->al.it >= pmlx->al.it_max)
-				put_pixel_to_img(pmlx, 0x000000);
+				put_pixel_to_img(pmlx, 0x000000, pmlx->al.x, pmlx->al.y);
 			else 
-				put_pixel_to_img(pmlx, pmlx->clr.palette[pmlx->al.it % 16]);
+				put_pixel_to_img(pmlx, pmlx->clr.palette[pmlx->al.it % 16], pmlx->al.x, pmlx->al.y);
 		}
 	}
 	return (param);

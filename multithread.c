@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:56 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/30 22:46:32 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/31 01:36:23 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ int		multi_thread(t_mlx *pmlx)
 	while (i--)
 		pthread_join(t[i], NULL);
 	mlx_put_image_to_window(pmlx->mlx_ptr, pmlx->win_ptr, pmlx->i.img, 0, 0);
+	print_legend(pmlx);
 	return (0);
 }

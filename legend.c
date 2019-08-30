@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 23:29:53 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/29 23:37:48 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/31 01:42:32 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	draw_little_square(t_mlx *mlx)
 		x = 1156;
 		while (x++ > 1155 && x < 1188)
 			mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x, y, 0x800000);
+			//put_pixel_to_img(mlx, 0x800000, x, y);
 	}
 	y = 495;
 	while (y++ > 494 && y < 515)
@@ -30,6 +31,7 @@ void	draw_little_square(t_mlx *mlx)
 		x = 1156;
 		while (x++ > 1155 && x < 1188)
 			mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x, y, 0x800000);
+			//put_pixel_to_img(mlx, 0x800000, x, y);
 	}
 }
 
@@ -39,15 +41,17 @@ void	color_box_legend(t_mlx *mlx)
 	int y;
 
 	y = 0;
-	while (y++ <= WINY)
+	while (y++ < WINY)
 	{
-		x = WINX;
-		while (x++ <= WINALL)
+		x = WINX + 1;
+		while (x++ < WINALL)
 		{
 			if ((y >= 150 && y <= 400) || y <= 100 || y >= 450)
 				mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x, y, 0x468DB4);
+				//put_pixel_to_img(mlx, 0x468DB4, x, y);
 			else if ((y > 100 && y < 150) || (y > 400 && y < 450))
 				mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x, y, 0x191970);
+				//put_pixel_to_img(mlx, 0x191970, x, y);
 		}
 	}
 	draw_little_square(mlx);
@@ -65,24 +69,38 @@ void	print_name(t_mlx *mlx)
 		mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 820, 60, 0x0000CD, 
 			"BURNINGSHIP");
 }
-void	print_legend(t_mlx *mlx)
+
+void	print_var(t_mlx *mlx)
+{
+	t_leg	leg;
+	
+	if (mlx->al.zoom < 650)
+		sprintf(leg.zoom, "zoom = %.2f", mlx->al.zoom);
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 840, 300, 0xFFFFFF, leg.zoom);
+}
+
+int		print_legend(t_mlx *mlx)
 {
 	color_box_legend(mlx);
 	print_name(mlx);
+	print_var(mlx);
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 950, 115, 0xFFFFFF, 
 		"INFORMATIONS");
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 960, 415, 0xFFFFFF, 
 		"COMMANDS");
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 810, 470, 0xFFFFFF, 
-		"Changer de couleur ? c'est ici =>");
+		"Changer de couleur ?  c'est ici =>");
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 810, 495, 0xFFFFFF, 
 		"Changer de fractale ? c'est ici =>");
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 810, 520, 0xFFFFFF, 
 		"Pour zoomer : click droit");
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 810, 545, 0xFFFFFF, 
-		"Pour bouger : flèches directionnelles");
+		"Pour bouger : fleches directionnelles");
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 810, 570, 0xFFFFFF, 
-		"Reset : barre d'espace");
+		"Reset :       barre d'espace");
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 810, 595, 0xFFFFFF, 
-		"Quitter : echap");
+		"Stop julia :  clic droit");
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 810, 620, 0xFFFFFF, 
+		"Quitter :     echap");
+	return (0);
 }
