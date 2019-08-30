@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 23:23:06 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/29 23:28:30 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/30 21:28:48 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	julia_calc(t_mlx *pmlx)
 	{
 		tmp = pmlx->al.z_r;
 		pmlx->al.z_r = pmlx->al.z_r * pmlx->al.z_r - pmlx->al.z_i 
-			* pmlx->al.z_i + pmlx->al.c_r;
-		pmlx->al.z_i = 2 * pmlx->al.z_i * tmp + pmlx->al.c_i;
+			* pmlx->al.z_i + pmlx->al.c_r + (pmlx->m.j_x / 400) - 1;
+		pmlx->al.z_i = 2 * pmlx->al.z_i * tmp + pmlx->al.c_i + (pmlx->m.j_y / 400) - 1;
 		pmlx->al.it++;
 	}
 }

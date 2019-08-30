@@ -6,25 +6,36 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:14 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/30 11:27:25 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/30 21:29:49 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+int		motion_notify(int x, int y, void *param)
+{
+	t_mlx *pmlx;
+
+	pmlx = (t_mlx *)param;
+	if (x < 0 || x >= WINX || y >= WINY || y < 0)
+		return (0);
+	pmlx->m.j_x = x;
+	pmlx->m.j_y = y;
+	return (0);
+}
 void	zoom_dezoom(int button, int x, int y, t_mlx *mlx)
 {
 	if (button == 5 && x < WINX)
 	{
-		mlx->al.x1 = (x / mlx->al.zoom + mlx->al.x1) - (x / (mlx->al.zoom * 1.3	));
-		mlx->al.y1 = (y / mlx->al.zoom + mlx->al.y1) - (y / (mlx->al.zoom * 1.3));
-		mlx->al.zoom = mlx->al.zoom * 1.3;
+		mlx->al.x1 = (x / mlx->al.zoom + mlx->al.x1) - (x / (mlx->al.zoom * 1.1));
+		mlx->al.y1 = (y / mlx->al.zoom + mlx->al.y1) - (y / (mlx->al.zoom * 1.1));
+		mlx->al.zoom = mlx->al.zoom * 1.1;
 	}
 	if (button == 4 && x < WINX)
 	{
-		mlx->al.x1 = (x / mlx->al.zoom + mlx->al.x1) - (x / (mlx->al.zoom / 1.3	));
-		mlx->al.y1 = (y / mlx->al.zoom + mlx->al.y1) - (y / (mlx->al.zoom / 1.3));
-		mlx->al.zoom = mlx->al.zoom / 1.3;
+		mlx->al.x1 = (x / mlx->al.zoom + mlx->al.x1) - (x / (mlx->al.zoom / 1.1	));
+		mlx->al.y1 = (y / mlx->al.zoom + mlx->al.y1) - (y / (mlx->al.zoom / 1.1));
+		mlx->al.zoom = mlx->al.zoom / 1.1;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/26 15:08:37 by jmoucach          #+#    #+#             */
-/*   Updated: 2019/07/10 16:22:50 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/30 20:38:38 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,5 +142,7 @@
 # define EV_MOUSE_RELEA    5
 # define EV_MOUSE_MOVE    6
 # define EV_CLOSE_WIN    17
+
+# define MOTION_NOTIFY	6
 
 #endif

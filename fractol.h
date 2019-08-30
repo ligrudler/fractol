@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/30 11:27:38 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/30 20:43:33 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ typedef struct	s_mouse
 {
 	int		x;
 	int		y;
+	double		j_y;
+	double		j_x;
 	int		tmpx;
 	int		tmpy;
 	int		mousebutton;
@@ -107,3 +109,5 @@ void			fill_palette(t_mlx *mlx);
 
 int				mouse_hook(int button, int x, int y, void *param);
 void			zoom_dezoom(int button, int x, int y, t_mlx *mlx);
+int				motion_notify(int x, int y, void *param);
+
