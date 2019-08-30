@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:14 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/30 22:42:22 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/30 23:14:55 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ int		mouse_hook(int button, int x, int y, void *param)
 
 	mlx = (t_mlx *)param;
 	zoom_dezoom(button, x, y, mlx);
+	if (button == 2)
+	{
+		if (mlx->stop == 1)
+			mlx->stop = 0;
+		else if (mlx->stop == 0)
+			mlx->stop = 1;
+	}
 	if (x > 1155 && y > 469 && x < 1188 
 		&& y < 490 && mlx->clr.chgcolor != 3)
 		mlx->clr.chgcolor++;
