@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 18:41:54 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/31 00:17:15 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/31 15:42:14 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	mandel_calc(t_mlx *mlx)
 	else 
 		put_pixel_to_img(mlx, mlx->clr.palette[mlx->al.it % 16], mlx->al.x, mlx->al.y);
 }
+
 
 void		*mandelbrot(void *param)
 {

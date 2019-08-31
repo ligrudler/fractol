@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 23:29:53 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/31 01:42:32 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/31 15:42:12 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,18 @@ void	draw_little_square(t_mlx *mlx)
 	{
 		x = 1156;
 		while (x++ > 1155 && x < 1188)
-			mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x, y, 0x800000);
-			//put_pixel_to_img(mlx, 0x800000, x, y);
+			//mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x, y, 0x800000);
+			put_pixel_to_img(mlx, 0xFFFFFF, x, y);
 	}
 	y = 495;
 	while (y++ > 494 && y < 515)
 	{
 		x = 1156;
 		while (x++ > 1155 && x < 1188)
-			mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x, y, 0x800000);
-			//put_pixel_to_img(mlx, 0x800000, x, y);
+		{
+			//mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x, y, 0x800000);
+			put_pixel_to_img(mlx, 0x800000, x, y);
+		}
 	}
 }
 
@@ -47,14 +49,15 @@ void	color_box_legend(t_mlx *mlx)
 		while (x++ < WINALL)
 		{
 			if ((y >= 150 && y <= 400) || y <= 100 || y >= 450)
-				mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x, y, 0x468DB4);
-				//put_pixel_to_img(mlx, 0x468DB4, x, y);
+				//mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x, y, 0x468DB4);
+				put_pixel_to_img(mlx, 0x468DB4, x, y);
 			else if ((y > 100 && y < 150) || (y > 400 && y < 450))
-				mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x, y, 0x191970);
-				//put_pixel_to_img(mlx, 0x191970, x, y);
+				//mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x, y, 0x191970);
+				put_pixel_to_img(mlx, 0x191970, x, y);
 		}
 	}
 	draw_little_square(mlx);
+	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->i.img, 0, 0);
 }
 
 void	print_name(t_mlx *mlx)

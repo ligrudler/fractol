@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/31 01:29:56 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/31 15:40:03 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,3 +116,6 @@ void			zoom_dezoom(int button, int x, int y, t_mlx *mlx);
 int				motion_notify(int x, int y, void *param);
 
 void			color_box_legend(t_mlx *mlx);
+void		draw_little_square(t_mlx *mlx);
+void		first_step(t_mlx *mlx);
+
