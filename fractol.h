@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/31 15:40:03 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/01 18:03:17 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@
 # define WINX 800
 # define WINY 800
 # define WINALL 1200
-# define NBR_THREAD 4
-# define WIN_THREAD 200
+# define ZOOM 250
+# define NBR_THREAD 2
+# define WIN_THREAD 400
 
 typedef struct	s_img
 {
@@ -50,6 +51,7 @@ typedef struct	s_color
 {
 	int			palette[16];
 	int			chgcolor;
+	int			gradient;
 }				t_color;
 
 typedef struct	s_algo
@@ -118,4 +120,5 @@ int				motion_notify(int x, int y, void *param);
 void			color_box_legend(t_mlx *mlx);
 void		draw_little_square(t_mlx *mlx);
 void		first_step(t_mlx *mlx);
+int				get_color(t_mlx *mlx);
 

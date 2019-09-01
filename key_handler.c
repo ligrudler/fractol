@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 19:12:43 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/30 23:14:58 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/01 18:05:41 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,13 @@ void	init_key(t_mlx *mlx)
 			/ mlx->al.zoom;
 	if (mlx->keyboard[KEY_SPACEBAR])
 		init_var(mlx);
+	if (mlx->keyboard[KEY_I])
+		mlx->al.it_max += 10;
+	if (mlx->keyboard[KEY_O] && mlx->al.it_max > 10)
+		mlx->al.it_max -= 10;
+	if (mlx->keyboard[KEY_C] && mlx->clr.gradient == 0)
+		mlx->clr.gradient = 1;
+	else if (mlx->keyboard[KEY_C] && mlx->clr.gradient == 1)
+		mlx->clr.gradient = 0;
 }
 

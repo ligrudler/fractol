@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 22:59:01 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/31 00:24:49 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/01 18:10:27 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ void	burning_calc(t_mlx *pmlx)
 	}
 	if (pmlx->al.it >= pmlx->al.it_max)
 		put_pixel_to_img(pmlx, 0x000000, pmlx->al.x, pmlx->al.y);
-	else 
+	else if (pmlx->clr.gradient == 0)
 		put_pixel_to_img(pmlx, pmlx->clr.palette[pmlx->al.it % 16], pmlx->al.x, pmlx->al.y);
+	else if (pmlx->clr.gradient == 1)
+		put_pixel_to_img(pmlx, get_color(pmlx), pmlx->al.x, pmlx->al.y);
 }
 
 void		*burning(void *param)

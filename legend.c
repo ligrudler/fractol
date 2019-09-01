@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 23:29:53 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/31 15:42:12 by grudler          ###   ########.fr       */
+/*   Updated: 2019/08/31 23:30:42 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	draw_little_square(t_mlx *mlx)
 	{
 		x = 1156;
 		while (x++ > 1155 && x < 1188)
-			//mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x, y, 0x800000);
 			put_pixel_to_img(mlx, 0xFFFFFF, x, y);
 	}
 	y = 495;
@@ -30,10 +29,7 @@ void	draw_little_square(t_mlx *mlx)
 	{
 		x = 1156;
 		while (x++ > 1155 && x < 1188)
-		{
-			//mlx_pixel_put(mlx->mlx_ptr, mlx->win_ptr, x, y, 0x800000);
 			put_pixel_to_img(mlx, 0x800000, x, y);
-		}
 	}
 }
 
@@ -77,9 +73,20 @@ void	print_var(t_mlx *mlx)
 {
 	t_leg	leg;
 	
-	if (mlx->al.zoom < 650)
-		sprintf(leg.zoom, "zoom = %.2f", mlx->al.zoom);
+	sprintf(leg.zoom, "Zoom =             x%.2f", mlx->al.zoom / ZOOM);
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 840, 300, 0xFFFFFF, leg.zoom);
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 840, 260, 0xFFFFFF, "Iterations max : ");
+	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 1030, 260, 0xFFFFFF, ft_itoa(mlx->al.it_max));
+	if (mlx->stop == 1 && mlx->fract == 1)
+		mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 70, 70, 0xFFFFFF, "STOP");
+	if (mlx->clr.chgcolor == 0)
+		mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 840, 230, 0xFFFFFF, "Couleur : BLEU");
+	else if (mlx->clr.chgcolor == 1)
+		mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 840, 230, 0xFFFFFF, "Couleur : SABLE");
+	else if (mlx->clr.chgcolor == 2)
+		mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 840, 230, 0xFFFFFF, "Couleur : VIOLET");
+	else if (mlx->clr.chgcolor == 3)
+		mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 840, 230, 0xFFFFFF, "Couleur : RED");
 }
 
 int		print_legend(t_mlx *mlx)
@@ -96,7 +103,7 @@ int		print_legend(t_mlx *mlx)
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 810, 495, 0xFFFFFF, 
 		"Changer de fractale ? c'est ici =>");
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 810, 520, 0xFFFFFF, 
-		"Pour zoomer : click droit");
+		"Pour zoomer : molette");
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 810, 545, 0xFFFFFF, 
 		"Pour bouger : fleches directionnelles");
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 810, 570, 0xFFFFFF, 

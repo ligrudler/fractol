@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 18:41:54 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/31 15:42:14 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/01 18:00:52 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ void	mandel_calc(t_mlx *mlx)
 	}
 	if (mlx->al.it >= mlx->al.it_max)
 		put_pixel_to_img(mlx, 0x000000, mlx->al.x, mlx->al.y);
-	else 
+	else if (mlx->clr.gradient == 0)
 		put_pixel_to_img(mlx, mlx->clr.palette[mlx->al.it % 16], mlx->al.x, mlx->al.y);
+	else if (mlx->clr.gradient == 1)
+		put_pixel_to_img(mlx, get_color(mlx), mlx->al.x, mlx->al.y);
 }
 
 
