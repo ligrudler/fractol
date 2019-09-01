@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 17:58:18 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/01 18:19:43 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/01 21:59:55 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,16 @@ double			get_light(int start, int end, double percent)
 {
 	return ((1 - percent) * start + percent * end);
 }
-int		get_color(t_mlx *mlx)
+int				get_color(t_mlx *mlx)
 {
 	int			red;
 	int			green;
 	int			blue;
 	double		percent;
-
-	percent = get_percent(0, 150, mlx->al.it);
-	red = get_light((0xFF0000 >> 16) & 0xFF, ( 0xFFFFFF >> 16) & 0xFF, percent);
-	green = get_light((0xFF0000 >> 8) & 0xFF, (0xFFFFFF >> 8) & 0xFF, percent);
-	blue = get_light((0xFF0000) & 0xFF, (0xFFFFFF) & 0xFF, percent);
+	
+	percent = get_percent(0, mlx->clr.end, mlx->al.it);
+	red = get_light((mlx->clr.color >> 16) & 0xFF, ( 0xFFFFFF >> 16) & 0xFF, percent);
+	green = get_light((mlx->clr.color >> 8) & 0xFF, (0xFFFFFF >> 8) & 0xFF, percent);
+	blue = get_light((mlx->clr.color) & 0xFF, (0xFFFFFF) & 0xFF, percent);
 	return ((red << 16) | green << 8 | blue);
 }

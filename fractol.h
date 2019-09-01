@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/01 18:03:17 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/02 00:23:14 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ typedef struct	s_color
 	int			palette[16];
 	int			chgcolor;
 	int			gradient;
+
+	double			end;
+	int			m;
+	int			color;
 }				t_color;
 
 typedef struct	s_algo
@@ -92,6 +96,7 @@ typedef struct	s_mlx
 typedef struct	s_leg
 {
 	char		zoom[128];
+	char		deg[100];
 }				t_leg;
 
 int				ft_which_frac(char **argv, t_mlx *mlx);

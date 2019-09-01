@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:56 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/01 18:04:02 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/02 00:13:30 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,13 @@ void	init_var(t_mlx *pmlx)
 	pmlx->clr.chgcolor = 0;
 	pmlx->al.it_max = 100;
 	pmlx->al.zoom = ZOOM;
-	pmlx->stop = 0;
+	pmlx->stop = 1;
 	pmlx->m.j_x = 400;
 	pmlx->m.j_y = 400;
 	pmlx->clr.gradient = 0;
+	pmlx->clr.end = 15;
+	pmlx->clr.m = 0;
+	pmlx->clr.color = 0x0000FF;
 	if (pmlx->fract == 0)
 	{
 		pmlx->al.x1 = -2.1;
@@ -36,7 +39,7 @@ void	init_var(t_mlx *pmlx)
 	if (pmlx->fract == 2)
 	{
 		pmlx->al.x1 = -2.0;
-		pmlx->al.y1 = -1.8;
+		pmlx->al.y1 = -2.0;
 	}
 }
 

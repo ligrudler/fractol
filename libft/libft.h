@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   includes.h                                         :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgrudler <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 21:25:34 by lgrudler          #+#    #+#             */
-/*   Updated: 2019/05/03 15:28:58 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/09/01 20:55:32 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,17 @@ typedef struct		s_car
 	int y;
 	int z;
 }					t_car;
+
+typedef struct		s_bres
+{
+	int dx;
+	int dy;
+	int sx;
+	int sy;
+	int err;
+	int e2;
+	int color;
+}					t_bres;
 
 typedef struct		s_list
 {
