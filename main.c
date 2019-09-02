@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/02 13:10:17 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/02 13:26:42 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	ft_which_frac(char **argv, t_mlx *mlx)
 		mlx->fract = 1;
 	else if (ft_strcmp(argv[1], "burningship") == 0)
 		mlx->fract = 2;
+	else if (ft_strcmp(argv[1], "autre") == 0)
+		mlx->fract = 3;
 	else
 	{
 		ft_putendl("Usage /fractol mandelbrot\n /fractol julia\n /fractol burningship");

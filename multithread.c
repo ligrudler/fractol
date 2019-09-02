@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:56 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/02 13:03:23 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/02 13:43:00 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ void	init_all(t_mlx *pmlx)
 	{
 		pmlx->a.x1 = -2.0;
 		pmlx->a.y1 = -2.0;
+	}
+	else if (pmlx->fract == 3)
+	{
+		pmlx->a.x1 = -1.6;
+		pmlx->a.y1 = -1.6;
 	}
 }
 
@@ -74,6 +79,8 @@ int		multi_thread(t_mlx *pmlx)
 			pthread_create(&t[i], NULL, julia, &tab[i]);
 		if (tab[i].fract == 2)
 			pthread_create(&t[i], NULL, burning, &tab[i]);
+		if (tab[i].fract == 3)
+			pthread_create(&t[i], NULL, autre, &tab[i]);
 		i++;
 	}
 	while (i--)

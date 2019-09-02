@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/02 13:16:01 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/02 13:28:39 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,5 +126,8 @@ void			draw_little_square(t_mlx *mlx);
 void			first_step(t_mlx *mlx);
 int				get_color(t_mlx *mlx);
 void			print_name(t_mlx *mlx);
+
+void			*autre(void *param);
+
 
 

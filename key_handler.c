@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 19:12:43 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/02 12:52:29 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/02 14:06:16 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	init_key(t_mlx *mlx)
 		mlx->a.it_max -= 10;
 	if (mlx->keyboard[KEY_D] && mlx->clr.end <= 200)
 		mlx->clr.end += 1;
-	if (mlx->keyboard[KEY_F] && mlx->clr.end >= 0)
+	if (mlx->keyboard[KEY_F] && mlx->clr.end >= 1)
 		mlx->clr.end -= 1;
 }
 
