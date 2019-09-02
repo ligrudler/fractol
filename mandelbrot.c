@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 18:41:54 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/01 20:59:19 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/02 12:54:32 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,27 @@
 
 void	mandel_calc(t_mlx *mlx)
 {
-	mlx->al.c_r = mlx->al.x / mlx->al.zoom + mlx->al.x1;
-	mlx->al.c_i = mlx->al.y / mlx->al.zoom + mlx->al.y1;
-	mlx->al.z_r = 0;
-	mlx->al.z_i = 0;
-	mlx->al.it = 0;
-	while (mlx->al.z_r * mlx->al.z_r + mlx->al.z_i * mlx->al.z_i < 4 
-		&& mlx->al.it < mlx->al.it_max)
+	mlx->a.c_r = mlx->a.x / mlx->a.zoom + mlx->a.x1;
+	mlx->a.c_i = mlx->a.y / mlx->a.zoom + mlx->a.y1;
+	mlx->a.z_r = 0;
+	mlx->a.z_i = 0;
+	mlx->a.it = 0;
+	while (mlx->a.z_r * mlx->a.z_r + mlx->a.z_i * mlx->a.z_i < 4 
+		&& mlx->a.it < mlx->a.it_max)
 	{
-		mlx->al.temp = mlx->al.z_r;
-		mlx->al.z_r = mlx->al.z_r * mlx->al.z_r - mlx->al.z_i * mlx->al.z_i 
-			+ mlx->al.c_r;
-		mlx->al.z_i = 2 * mlx->al.z_i * mlx->al.temp + mlx->al.c_i;
-		mlx->al.it++;
+		mlx->a.temp = mlx->a.z_r;
+		mlx->a.z_r = mlx->a.z_r * mlx->a.z_r - mlx->a.z_i * mlx->a.z_i 
+			+ mlx->a.c_r;
+		mlx->a.z_i = 2 * mlx->a.z_i * mlx->a.temp + mlx->a.c_i;
+		mlx->a.it++;
 	}
-	if (mlx->al.it >= mlx->al.it_max)
-		put_pixel_to_img(mlx, 0x000000, mlx->al.x, mlx->al.y);
+	if (mlx->a.it >= mlx->a.it_max)
+		put_pixel_to_img(mlx, 0x000000, mlx->a.x, mlx->a.y);
 	else if (mlx->clr.gradient == 0)
-		put_pixel_to_img(mlx, mlx->clr.palette[mlx->al.it % 16], mlx->al.x, mlx->al.y);
+		put_pixel_to_img(mlx, mlx->clr.palette[mlx->a.it % 16], mlx->a.x,
+			mlx->a.y);
 	else if (mlx->clr.gradient == 1)
-		put_pixel_to_img(mlx, get_color(mlx), mlx->al.x, mlx->al.y);
+		put_pixel_to_img(mlx, get_color(mlx), mlx->a.x, mlx->a.y);
 }
 
 
@@ -42,10 +43,10 @@ void		*mandelbrot(void *param)
 	t_mlx	*pmlx;
 
 	pmlx = (t_mlx *)param;
-	while (pmlx->al.x++ < WINX)
+	while (pmlx->a.x++ < WINX)
 	{
-		pmlx->al.y = 0;
-		while (pmlx->al.y++ < pmlx->al.y_max)
+		pmlx->a.y = 0;
+		while (pmlx->a.y++ < pmlx->a.y_max)
 			mandel_calc(pmlx);
 	}
 	return (param);

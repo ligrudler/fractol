@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:14 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/02 00:43:04 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/02 13:00:06 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,46 +27,21 @@ void	zoom_dezoom(int button, int x, int y, t_mlx *mlx)
 {
 	if (button == 5 && x < WINX)
 	{
-		mlx->al.x1 = (x / mlx->al.zoom + mlx->al.x1) - (x / (mlx->al.zoom * 1.1));
-		mlx->al.y1 = (y / mlx->al.zoom + mlx->al.y1) - (y / (mlx->al.zoom * 1.1));
-		mlx->al.zoom = mlx->al.zoom * 1.1;
+		mlx->a.x1 = (x / mlx->a.zoom + mlx->a.x1) - (x / (mlx->a.zoom * 1.1));
+		mlx->a.y1 = (y / mlx->a.zoom + mlx->a.y1) - (y / (mlx->a.zoom * 1.1));
+		mlx->a.zoom = mlx->a.zoom * 1.1;
 	}
-	if (button == 4 && x < WINX && mlx->al.zoom > 0)
+	if (button == 4 && x < WINX && mlx->a.zoom > 0)
 	{
-		mlx->al.x1 = (x / mlx->al.zoom + mlx->al.x1) - (x / (mlx->al.zoom / 1.1	));
-		mlx->al.y1 = (y / mlx->al.zoom + mlx->al.y1) - (y / (mlx->al.zoom / 1.1));
-		mlx->al.zoom = mlx->al.zoom / 1.1;
+		mlx->a.x1 = (x / mlx->a.zoom + mlx->a.x1) - (x / (mlx->a.zoom / 1.1	));
+		mlx->a.y1 = (y / mlx->a.zoom + mlx->a.y1) - (y / (mlx->a.zoom / 1.1));
+		mlx->a.zoom = mlx->a.zoom / 1.1;
 	}
 }
 
-int		mouse_hook(int button, int x, int y, void *param)
+void	set_menu(int x, int y, t_mlx *mlx)
 {
-	t_mlx *mlx;
-
-	mlx = (t_mlx *)param;
-	zoom_dezoom(button, x, y, mlx);
-	if (button == 2)
-	{
-		if (mlx->stop == 1)
-			mlx->stop = 0;
-		else if (mlx->stop == 0)
-			mlx->stop = 1;
-	}
-	if (x > 1155 && y < 380 && x < 1188 
-		&& y > 359 && mlx->fract != 2)
-	{
-		mlx->fract++;
-		init_var(mlx);
-	}
-	else if (x > 1155 && y < 380 && x < 1188 
-		&& y > 359)
-	{
-		mlx->fract = 0;
-		init_var(mlx);
-	}
-	if (x > 915 && x < 985 && y > 610 && y < 626)
-		mlx->clr.gradient = 1;
-	else if (x > 1065 && y > 610 && y < 626 && x < 1105)
+	if (x > 1065 && y > 610 && y < 626 && x < 1105)
 		mlx->clr.gradient = 0;
 	else if (x > 860 && x < 900 && y > 645 && y < 661)
 		mlx->clr.color = 0x0000FF;
@@ -82,14 +57,41 @@ int		mouse_hook(int button, int x, int y, void *param)
 		mlx->clr.color = 0x33CC33;
 	else if (x > 980 && x < 1030 && y > 695 && y < 711)
 		mlx->clr.color = 0xFFCC33;
-	if (x > 860 && x < 900 && y > 665 && y < 678)
+	else if (x > 860 && x < 900 && y > 665 && y < 678)
 		mlx->clr.chgcolor = 0;
-	if (x > 920 && x < 970 && y > 665 && y < 678)
+	else if (x > 920 && x < 970 && y > 665 && y < 678)
 		mlx->clr.chgcolor = 1;
-	if (x > 990 && x < 1050 && y > 665 && y < 678)
+	else if (x > 990 && x < 1050 && y > 665 && y < 678)
 		mlx->clr.chgcolor = 2;
-	if (x > 1070 && x < 1120 && y > 665 && y < 678)
+	else if (x > 1070 && x < 1120 && y > 665 && y < 678)
 		mlx->clr.chgcolor = 3;
-	
+}
+
+int		mouse_hook(int button, int x, int y, void *param)
+{
+	t_mlx *mlx;
+
+	mlx = (t_mlx *)param;
+	zoom_dezoom(button, x, y, mlx);
+	if (button == 2)
+	{
+		if (mlx->stop == 1)
+			mlx->stop = 0;
+		else if (mlx->stop == 0)
+			mlx->stop = 1;
+	}
+	if (x > 1155 && y < 380 && x < 1188 && y > 359 && mlx->fract != 2)
+	{
+		mlx->fract++;
+		init_var(mlx);
+	}
+	else if (x > 1155 && y < 380 && x < 1188 && y > 359)
+	{
+		mlx->fract = 0;
+		init_var(mlx);
+	}
+	if (x > 915 && x < 985 && y > 610 && y < 626)
+		mlx->clr.gradient = 1;
+	set_menu(x, y, mlx);
 	return (0);
 }

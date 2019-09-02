@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/02 00:23:14 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/02 13:16:01 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ typedef struct	s_img
 
 typedef struct	s_mouse
 {
-	int		x;
-	int		y;
+	int			x;
+	int			y;
 	double		j_y;
 	double		j_x;
-	int		tmpx;
-	int		tmpy;
-	int		mousebutton;
-	char	mouseboard[5];
+	int			tmpx;
+	int			tmpy;
+	int			mousebutton;
+	char		mouseboard[5];
 }				t_mouse;
 
 typedef struct	s_color
@@ -53,8 +53,7 @@ typedef struct	s_color
 	int			chgcolor;
 	int			gradient;
 
-	double			end;
-	int			m;
+	double		end;
 	int			color;
 }				t_color;
 
@@ -87,7 +86,7 @@ typedef struct	s_mlx
 	char		keyboard[512];
 	int			stop;
 	
-	t_algo		al;
+	t_algo		a;
 	t_img		i;
 	t_color		clr;
 	t_mouse		m;
@@ -123,7 +122,9 @@ void			zoom_dezoom(int button, int x, int y, t_mlx *mlx);
 int				motion_notify(int x, int y, void *param);
 
 void			color_box_legend(t_mlx *mlx);
-void		draw_little_square(t_mlx *mlx);
-void		first_step(t_mlx *mlx);
+void			draw_little_square(t_mlx *mlx);
+void			first_step(t_mlx *mlx);
 int				get_color(t_mlx *mlx);
+void			print_name(t_mlx *mlx);
+
 

@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 23:23:06 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/01 18:09:43 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/02 12:51:22 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,20 @@ void	julia_calc(t_mlx *pmlx)
 {
 	double tmp;
 
-	pmlx->al.c_r = -0.74543;
-	pmlx->al.c_i = 0.11301;
-	pmlx->al.z_r = pmlx->al.x / pmlx->al.zoom + pmlx->al.x1;
-	pmlx->al.z_i = pmlx->al.y / pmlx->al.zoom + pmlx->al.y1;
-	pmlx->al.it = 0;
-	while (pmlx->al.z_r * pmlx->al.z_r + pmlx->al.z_i * pmlx->al.z_i < 4 
-		&& pmlx->al.it < pmlx->al.it_max)
+	pmlx->a.c_r = -0.74543;
+	pmlx->a.c_i = 0.11301;
+	pmlx->a.z_r = pmlx->a.x / pmlx->a.zoom + pmlx->a.x1;
+	pmlx->a.z_i = pmlx->a.y / pmlx->a.zoom + pmlx->a.y1;
+	pmlx->a.it = 0;
+	while (pmlx->a.z_r * pmlx->a.z_r + pmlx->a.z_i * pmlx->a.z_i < 4 
+		&& pmlx->a.it < pmlx->a.it_max)
 	{
-		tmp = pmlx->al.z_r;
-		pmlx->al.z_r = pmlx->al.z_r * pmlx->al.z_r - pmlx->al.z_i 
-			* pmlx->al.z_i + pmlx->al.c_r + (pmlx->m.j_x / (WINX / 2) )- 1;
-		pmlx->al.z_i = 2 * pmlx->al.z_i * tmp + pmlx->al.c_i + (pmlx->m.j_y / (WINY / 2)) - 1;
-		pmlx->al.it++;
+		tmp = pmlx->a.z_r;
+		pmlx->a.z_r = pmlx->a.z_r * pmlx->a.z_r - pmlx->a.z_i 
+			* pmlx->a.z_i + pmlx->a.c_r + (pmlx->m.j_x / (WINX / 2) )- 1;
+		pmlx->a.z_i = 2 * pmlx->a.z_i * tmp + pmlx->a.c_i + (pmlx->m.j_y
+			/ (WINY / 2)) - 1;
+		pmlx->a.it++;
 	}
 }
 
@@ -37,18 +38,19 @@ void		*julia(void *param)
 	t_mlx		*pmlx;
 
 	pmlx = (t_mlx *)param;
-	while(pmlx->al.x++ < WINX)
+	while(pmlx->a.x++ < WINX)
 	{
-		pmlx->al.y = 0;
-		while (pmlx->al.y++ < WINY)
+		pmlx->a.y = 0;
+		while (pmlx->a.y++ < WINY)
 		{
 			julia_calc(pmlx);
-			if (pmlx->al.it >= pmlx->al.it_max)
-				put_pixel_to_img(pmlx, 0x000000, pmlx->al.x, pmlx->al.y);
+			if (pmlx->a.it >= pmlx->a.it_max)
+				put_pixel_to_img(pmlx, 0x000000, pmlx->a.x, pmlx->a.y);
 			else if (pmlx->clr.gradient == 0)
-				put_pixel_to_img(pmlx, pmlx->clr.palette[pmlx->al.it % 16], pmlx->al.x, pmlx->al.y);
+				put_pixel_to_img(pmlx, pmlx->clr.palette[pmlx->a.it % 16],
+					pmlx->a.x, pmlx->a.y);
 			else if (pmlx->clr.gradient == 1)
-				put_pixel_to_img(pmlx, get_color(pmlx), pmlx->al.x, pmlx->al.y);
+				put_pixel_to_img(pmlx, get_color(pmlx), pmlx->a.x, pmlx->a.y);
 		}
 	}
 	return (param);

@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 19:12:43 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/01 23:41:23 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/02 12:52:29 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,24 +36,24 @@ void	init_key(t_mlx *mlx)
 {
 	if (mlx->keyboard[KEY_ESCAPE])
 	{
-		//mlx_destroy_image(mlx->mlx_ptr, mlx->img);
-		//mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr); abort trap 6
+		mlx_destroy_image(mlx->mlx_ptr, mlx->i.img);
+		mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
 		exit(0);
 	}
 	if ((mlx->keyboard[KEY_LEFT] && !mlx->keyboard[KEY_RIGHT]) 
 		|| (mlx->keyboard[KEY_RIGHT] && !mlx->keyboard[KEY_LEFT]))
-		mlx->al.x1 += mlx->keyboard[KEY_LEFT] ? 10 / mlx->al.zoom: -10 
-			/ mlx->al.zoom;
+		mlx->a.x1 += mlx->keyboard[KEY_LEFT] ? 10 / mlx->a.zoom: -10 
+			/ mlx->a.zoom;
 	if ((mlx->keyboard[KEY_DOWN] && !mlx->keyboard[KEY_UP]) 
 		|| (mlx->keyboard[KEY_UP] && !mlx->keyboard[KEY_DOWN]))
-		mlx->al.y1 += mlx->keyboard[KEY_UP] ? 10 / mlx->al.zoom: -10 
-			/ mlx->al.zoom;
+		mlx->a.y1 += mlx->keyboard[KEY_UP] ? 10 / mlx->a.zoom: -10 
+			/ mlx->a.zoom;
 	if (mlx->keyboard[KEY_SPACEBAR])
 		init_var(mlx);
 	if (mlx->keyboard[KEY_I])
-		mlx->al.it_max += 10;
-	if (mlx->keyboard[KEY_O] && mlx->al.it_max > 10)
-		mlx->al.it_max -= 10;
+		mlx->a.it_max += 10;
+	if (mlx->keyboard[KEY_O] && mlx->a.it_max > 10)
+		mlx->a.it_max -= 10;
 	if (mlx->keyboard[KEY_D] && mlx->clr.end <= 200)
 		mlx->clr.end += 1;
 	if (mlx->keyboard[KEY_F] && mlx->clr.end >= 0)

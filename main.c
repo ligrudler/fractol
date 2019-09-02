@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/31 15:48:10 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/02 13:10:17 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_which_frac(char **argv, t_mlx *mlx)
 		mlx->fract = 2;
 	else
 	{
-		ft_putendl("Usage /fractol \"mandelbrot\"");
+		ft_putendl("Usage /fractol mandelbrot\n /fractol julia\n /fractol burningship");
 		return (0);
 	}
 	return (1);
