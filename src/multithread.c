@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   multithread.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:56 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/03 15:40:02 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/09/03 20:32:18 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+# include "../incs/fractol.h"
 
 void	init_all(t_mlx *pmlx)
 {
@@ -51,7 +51,6 @@ void	init_var(t_mlx *pmlx)
 	pmlx->clr.color = 0x0000FF;
 	pmlx->clr.j = -1;
 	init_all(pmlx);
-
 }
 
 void	first_step(t_mlx *mlx)

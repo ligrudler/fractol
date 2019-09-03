@@ -6,11 +6,11 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 13:12:04 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/02 13:16:48 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/03 20:31:48 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "fractol.h"
+# include "../incs/fractol.h"
 
 void	draw_little_square(t_mlx *mlx)
 {

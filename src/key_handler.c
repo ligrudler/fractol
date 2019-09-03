@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 19:12:43 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/03 15:12:01 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/09/03 20:31:40 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
-
-#include <stdio.h>
+# include "../incs/fractol.h"
 
 int		key_press(int key, void *param)
 {
@@ -59,4 +57,3 @@ void	init_key(t_mlx *mlx)
 	if (mlx->keyboard[KEY_F] && mlx->clr.end >= 1)
 		mlx->clr.end -= 1;
 }
-

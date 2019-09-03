@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 23:23:06 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/03 13:43:58 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/09/03 20:31:36 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../incs/fractol.h"
 
 void	julia_calc(t_mlx *pmlx)
 {

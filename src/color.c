@@ -6,11 +6,11 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 16:25:18 by grudler           #+#    #+#             */
-/*   Updated: 2019/08/29 22:56:06 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/03 20:31:26 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../incs/fractol.h"
 
 void		fill_palette(t_mlx *mlx)
 {

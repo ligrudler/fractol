@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:14 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/03 13:13:57 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/09/03 20:32:12 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../incs/fractol.h"
 
 int		motion_notify(int x, int y, void *param)
 {

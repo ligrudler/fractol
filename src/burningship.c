@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   burningship.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 22:59:01 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/03 13:44:39 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/09/03 20:31:17 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../incs/fractol.h"
 
 void	burning_calc(t_mlx *pmlx)
 {

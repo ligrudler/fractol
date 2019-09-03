@@ -6,11 +6,11 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/02 13:26:42 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/03 20:32:01 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../incs/fractol.h"
 
 void	put_pixel_to_img(t_mlx *mlx, int color, int x, int y)
 {

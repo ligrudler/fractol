@@ -6,11 +6,11 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 23:29:53 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/02 13:22:03 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/03 20:31:56 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../incs/fractol.h"
 
 void	print_var(t_mlx *mlx)
 {
@@ -57,14 +57,12 @@ void	menu_gradient(t_leg leg, t_mlx *mlx)
 
 void	print_menu(t_mlx *mlx)
 {
-		t_leg	leg;
-		
 		mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 915, 605, 0xFFFFFF,
 			"DEGRADE   OU   ZONE ?");
 		if (mlx->clr.gradient == 0)
 			mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 1065, 605, 0x191970, "ZONE");
 		if (mlx->clr.gradient == 1)
-			menu_gradient(leg, mlx);
+			menu_gradient(mlx->l, mlx);
 		else if (mlx->clr.gradient == 0)
 		{
 			mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 860, 660, 0xFFFFFF,

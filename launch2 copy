@@ -1,3 +1,0 @@
-gcc -L /usr/local/lib -lmlx -lpthread -framework OpenGL -framework Appkit -D_REENTRANT *.c libft/libft.a -I hdr
-./a.out mandelbrot
-rm a.out

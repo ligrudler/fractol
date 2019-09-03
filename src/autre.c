@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   autre.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/09 18:41:54 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/03 15:42:01 by lgrudler         ###   ########.fr       */
+/*   Created: 2019/09/02 13:24:30 by grudler           #+#    #+#             */
+/*   Updated: 2019/09/03 20:31:01 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../incs/fractol.h"
 
-void	mandel_calc(t_mlx *mlx)
+void	autre_calc(t_mlx *mlx)
 {
 	mlx->a.c_r = mlx->a.x / mlx->a.zoom + mlx->a.x1;
 	mlx->a.c_i = mlx->a.y / mlx->a.zoom + mlx->a.y1;
 	mlx->a.z_r = 0;
 	mlx->a.z_i = 0;
 	mlx->a.it = 0;
-	while (mlx->a.z_r * mlx->a.z_r + mlx->a.z_i * mlx->a.z_i < 4
+	while (mlx->a.z_r * mlx->a.z_r + mlx->a.z_i * mlx->a.z_i < 4 
 		&& mlx->a.it < mlx->a.it_max)
 	{
 		mlx->a.temp = mlx->a.z_r;
-		mlx->a.z_r = mlx->a.z_r * mlx->a.z_r - mlx->a.z_i * mlx->a.z_i
+		mlx->a.z_r = mlx->a.z_r * mlx->a.z_r - mlx->a.z_i * mlx->a.z_i 
 			+ mlx->a.c_r;
 		mlx->a.z_i = 2 * mlx->a.z_i * mlx->a.temp + mlx->a.c_i;
 		mlx->a.it++;
@@ -37,16 +37,17 @@ void	mandel_calc(t_mlx *mlx)
 		put_pixel_to_img(mlx, get_color(mlx), mlx->a.x, mlx->a.y);
 }
 
-void		*mandelbrot(void *param)
+
+void		*autre(void *param)
 {
 	t_mlx	*pmlx;
 
 	pmlx = (t_mlx *)param;
 	while (pmlx->a.y++ < pmlx->a.y_max)
 	{
-		pmlx->a.x = 0;
+		pmlx->a.y = 0;
 		while (pmlx->a.x++ < WINX)
-			mandel_calc(pmlx);
+			autre_calc(pmlx);
 	}
 	return (param);
 }

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/03 14:25:58 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/09/03 20:32:51 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include "mlx.h"
+#include "../libft/libft.h"
+#include "../mlx.h"
 #include "keycode.h"
 #include <pthread.h>
 #include <math.h>
@@ -79,6 +79,12 @@ typedef struct	s_algo
 	double		temp;
 }				t_algo;
 
+typedef struct	s_leg
+{
+	char		zoom[128];
+	char		deg[100];
+}				t_leg;
+
 typedef struct	s_mlx
 {
 	void		*mlx_ptr;
@@ -92,44 +98,39 @@ typedef struct	s_mlx
 	t_img		i;
 	t_color		clr;
 	t_mouse		m;
+	t_leg		l;
 }				t_mlx;
 
-typedef struct	s_leg
-{
-	char		zoom[128];
-	char		deg[100];
-}				t_leg;
-
-int				ft_which_frac(char **argv, t_mlx *mlx);
-
-void			*mandelbrot(void *param);
-void			*julia(void *param);
-void			*burning(void *param);
-
-int				multi_thread(t_mlx *pmlx);
-void			put_pixel_to_img(t_mlx *mlx, int color, int x, int y);
-void			draw_fract(t_mlx *mlx);
-
-int				key_press(int key, void *param);
-int				key_release(int key, void *param);
-void			init_key(t_mlx *mlx);
-
-void			init_var(t_mlx *pmlx);
-
-int				print_legend(t_mlx *mlx);
-void			fill_palette(t_mlx *mlx);
-
-int				mouse_hook(int button, int x, int y, void *param);
-void			zoom_dezoom(int button, int x, int y, t_mlx *mlx);
-int				motion_notify(int x, int y, void *param);
-
-void			color_box_legend(t_mlx *mlx);
-void			draw_little_square(t_mlx *mlx);
-void			first_step(t_mlx *mlx);
+void	autre_calc(t_mlx *mlx);
+void		*autre(void *param);
+void	burning_calc(t_mlx *pmlx);
+void		*burning(void *param);
+void		fill_palette(t_mlx *mlx);
+double			get_percent(int start, int end, int current);
+double			get_light(int start, int end, double percent);
 int				get_color(t_mlx *mlx);
-void			print_name(t_mlx *mlx);
-
-void			*autre(void *param);
-
-
-
+void	julia_calc(t_mlx *pmlx);
+void		*julia(void *param);
+int		key_press(int key, void *param);
+int		key_release(int key, void *param);
+void	init_key(t_mlx *mlx);
+void	draw_little_square(t_mlx *mlx);
+void	color_box_legend(t_mlx *mlx);
+void	print_name(t_mlx *mlx);
+void	print_var(t_mlx *mlx);
+void	menu_gradient(t_leg leg, t_mlx *mlx);
+void	print_menu(t_mlx *mlx);
+int		print_legend(t_mlx *mlx);
+void	put_pixel_to_img(t_mlx *mlx, int color, int x, int y);
+void	init_mlx(t_mlx *mlx);
+int	ft_which_frac(char **argv, t_mlx *mlx);
+void	mandel_calc(t_mlx *mlx);
+void		*mandelbrot(void *param);
+int		motion_notify(int x, int y, void *param);
+void	zoom_dezoom(int button, int x, int y, t_mlx *mlx);
+void	set_menu(int x, int y, t_mlx *mlx);
+int		mouse_hook(int button, int x, int y, void *param);
+void	init_all(t_mlx *pmlx);
+void	init_var(t_mlx *pmlx);
+void	first_step(t_mlx *mlx);
+int		multi_thread(t_mlx *pmlx);

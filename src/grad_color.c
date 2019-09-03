@@ -6,11 +6,11 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 17:58:18 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/02 12:47:52 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/03 20:31:31 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "../incs/fractol.h"
 
 double			get_percent(int start, int end, int current)
 {
