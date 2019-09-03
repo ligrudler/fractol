@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/02 13:28:39 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/03 14:25:58 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # define WINY 800
 # define WINALL 1200
 # define ZOOM 250
-# define NBR_THREAD 2
-# define WIN_THREAD 400
+# define NBR_THREAD 80
+# define WIN_THREAD (WINX / NBR_THREAD)
 
 typedef struct	s_img
 {
@@ -55,6 +55,7 @@ typedef struct	s_color
 
 	double		end;
 	int			color;
+	int			j;
 }				t_color;
 
 typedef struct	s_algo
@@ -72,6 +73,7 @@ typedef struct	s_algo
 	double		z_i;
 	double		z_r;
 
+	int			x_max;
 	int			y_max;
 	double		zoom;
 	double		temp;
@@ -85,7 +87,7 @@ typedef struct	s_mlx
 	int			fract;
 	char		keyboard[512];
 	int			stop;
-	
+
 	t_algo		a;
 	t_img		i;
 	t_color		clr;

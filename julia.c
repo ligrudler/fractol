@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 23:23:06 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/02 13:34:33 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/03 13:43:58 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	julia_calc(t_mlx *pmlx)
 	pmlx->a.z_r = pmlx->a.x / pmlx->a.zoom + pmlx->a.x1;
 	pmlx->a.z_i = pmlx->a.y / pmlx->a.zoom + pmlx->a.y1;
 	pmlx->a.it = 0;
-	while (pmlx->a.z_r * pmlx->a.z_r + pmlx->a.z_i * pmlx->a.z_i < 4 
+	while (pmlx->a.z_r * pmlx->a.z_r + pmlx->a.z_i * pmlx->a.z_i < 4
 		&& pmlx->a.it < pmlx->a.it_max)
 	{
 		tmp = pmlx->a.z_r;
-		pmlx->a.z_r = pmlx->a.z_r * pmlx->a.z_r - pmlx->a.z_i 
+		pmlx->a.z_r = pmlx->a.z_r * pmlx->a.z_r - pmlx->a.z_i
 			* pmlx->a.z_i + pmlx->a.c_r + (pmlx->m.j_x / (WINX / 2) )- 1;
 		pmlx->a.z_i = 2 * pmlx->a.z_i * tmp + pmlx->a.c_i + (pmlx->m.j_y
 			/ (WINY / 2)) - 1;
@@ -38,10 +38,10 @@ void		*julia(void *param)
 	t_mlx		*pmlx;
 
 	pmlx = (t_mlx *)param;
-	while(pmlx->a.x++ < WINX)
+	while(pmlx->a.y++ < pmlx->a.y_max)
 	{
-		pmlx->a.y = 0;
-		while (pmlx->a.y++ < WINY)
+		pmlx->a.x = 0;
+		while (pmlx->a.x++ < WINX)
 		{
 			julia_calc(pmlx);
 			if (pmlx->a.it >= pmlx->a.it_max)

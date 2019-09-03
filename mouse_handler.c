@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:14 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/02 13:26:52 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/03 13:13:57 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ int		motion_notify(int x, int y, void *param)
 }
 void	zoom_dezoom(int button, int x, int y, t_mlx *mlx)
 {
-	if (button == 5 && x < WINX)
+	if (button == 4 && x < WINX)
 	{
 		mlx->a.x1 = (x / mlx->a.zoom + mlx->a.x1) - (x / (mlx->a.zoom * 1.1));
 		mlx->a.y1 = (y / mlx->a.zoom + mlx->a.y1) - (y / (mlx->a.zoom * 1.1));
 		mlx->a.zoom = mlx->a.zoom * 1.1;
 	}
-	if (button == 4 && x < WINX && mlx->a.zoom > 0)
+	if (button == 5 && x < WINX && mlx->a.zoom > 0)
 	{
 		mlx->a.x1 = (x / mlx->a.zoom + mlx->a.x1) - (x / (mlx->a.zoom / 1.1	));
 		mlx->a.y1 = (y / mlx->a.zoom + mlx->a.y1) - (y / (mlx->a.zoom / 1.1));
@@ -80,7 +80,7 @@ int		mouse_hook(int button, int x, int y, void *param)
 		else if (mlx->stop == 0)
 			mlx->stop = 1;
 	}
-	if (x > 1155 && y < 380 && x < 1188 && y > 359 && mlx->fract != 3)
+	if (x > 1155 && y < 380 && x < 1188 && y > 359 && mlx->fract != 2)
 	{
 		mlx->fract++;
 		init_var(mlx);

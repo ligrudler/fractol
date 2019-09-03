@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   multithread.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:56 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/02 13:43:00 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/03 15:40:02 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,9 @@ void	init_var(t_mlx *pmlx)
 	pmlx->clr.gradient = 0;
 	pmlx->clr.end = 15;
 	pmlx->clr.color = 0x0000FF;
+	pmlx->clr.j = -1;
 	init_all(pmlx);
-	
+
 }
 
 void	first_step(t_mlx *mlx)
@@ -71,10 +72,10 @@ int		multi_thread(t_mlx *pmlx)
 	while (i < NBR_THREAD)
 	{
 		ft_memcpy((void *)&tab[i], (void *)pmlx, sizeof(t_mlx));
-		tab[i].a.y = WIN_THREAD * i;
+		tab[i].a.y = WIN_THREAD * (i);
 		tab[i].a.y_max = WIN_THREAD * (i + 1);
 		if (tab[i].fract == 0)
-			pthread_create(&t[i], NULL, mandelbrot, &tab[i]);	/* a proteger ??*/	
+			pthread_create(&t[i], NULL, mandelbrot, &tab[i]);
 		if (tab[i].fract == 1)
 			pthread_create(&t[i], NULL, julia, &tab[i]);
 		if (tab[i].fract == 2)

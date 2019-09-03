@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handler.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 19:12:43 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/02 14:06:16 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/03 15:12:01 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ void	init_key(t_mlx *mlx)
 		mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
 		exit(0);
 	}
-	if ((mlx->keyboard[KEY_LEFT] && !mlx->keyboard[KEY_RIGHT]) 
+	if ((mlx->keyboard[KEY_LEFT] && !mlx->keyboard[KEY_RIGHT])
 		|| (mlx->keyboard[KEY_RIGHT] && !mlx->keyboard[KEY_LEFT]))
-		mlx->a.x1 += mlx->keyboard[KEY_LEFT] ? 10 / mlx->a.zoom: -10 
+		mlx->a.x1 += mlx->keyboard[KEY_LEFT] ? 10 / mlx->a.zoom: -10
 			/ mlx->a.zoom;
-	if ((mlx->keyboard[KEY_DOWN] && !mlx->keyboard[KEY_UP]) 
+	if ((mlx->keyboard[KEY_DOWN] && !mlx->keyboard[KEY_UP])
 		|| (mlx->keyboard[KEY_UP] && !mlx->keyboard[KEY_DOWN]))
-		mlx->a.y1 += mlx->keyboard[KEY_UP] ? 10 / mlx->a.zoom: -10 
+		mlx->a.y1 += mlx->keyboard[KEY_UP] ? 10 / mlx->a.zoom: -10
 			/ mlx->a.zoom;
 	if (mlx->keyboard[KEY_SPACEBAR])
 		init_var(mlx);

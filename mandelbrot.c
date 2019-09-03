@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 18:41:54 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/02 12:54:32 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/03 15:42:01 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	mandel_calc(t_mlx *mlx)
 	mlx->a.z_r = 0;
 	mlx->a.z_i = 0;
 	mlx->a.it = 0;
-	while (mlx->a.z_r * mlx->a.z_r + mlx->a.z_i * mlx->a.z_i < 4 
+	while (mlx->a.z_r * mlx->a.z_r + mlx->a.z_i * mlx->a.z_i < 4
 		&& mlx->a.it < mlx->a.it_max)
 	{
 		mlx->a.temp = mlx->a.z_r;
-		mlx->a.z_r = mlx->a.z_r * mlx->a.z_r - mlx->a.z_i * mlx->a.z_i 
+		mlx->a.z_r = mlx->a.z_r * mlx->a.z_r - mlx->a.z_i * mlx->a.z_i
 			+ mlx->a.c_r;
 		mlx->a.z_i = 2 * mlx->a.z_i * mlx->a.temp + mlx->a.c_i;
 		mlx->a.it++;
@@ -37,16 +37,15 @@ void	mandel_calc(t_mlx *mlx)
 		put_pixel_to_img(mlx, get_color(mlx), mlx->a.x, mlx->a.y);
 }
 
-
 void		*mandelbrot(void *param)
 {
 	t_mlx	*pmlx;
 
 	pmlx = (t_mlx *)param;
-	while (pmlx->a.x++ < WINX)
+	while (pmlx->a.y++ < pmlx->a.y_max)
 	{
-		pmlx->a.y = 0;
-		while (pmlx->a.y++ < pmlx->a.y_max)
+		pmlx->a.x = 0;
+		while (pmlx->a.x++ < WINX)
 			mandel_calc(pmlx);
 	}
 	return (param);
