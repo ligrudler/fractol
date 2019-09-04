@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/04 10:12:11 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/04 10:47:59 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct	s_color
 	double		end;
 	int			color;
 	int			j;
+	int			dec;
 }				t_color;
 
 typedef struct	s_algo
@@ -134,3 +135,4 @@ void	init_all(t_mlx *pmlx);
 void	init_var(t_mlx *pmlx);
 void	first_step(t_mlx *mlx);
 int		multi_thread(t_mlx *pmlx);
+void		decalage_palette(t_mlx *mlx);

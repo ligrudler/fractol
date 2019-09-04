@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:56 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/04 10:25:26 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/04 10:52:20 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	init_var(t_mlx *pmlx)
 	pmlx->clr.end = 15;
 	pmlx->clr.color = 0x0000FF;
 	pmlx->clr.j = 0;
+	pmlx->clr.dec = 0;
 	init_all(pmlx);
 }
 
@@ -58,6 +59,8 @@ void	first_step(t_mlx *mlx)
 	ft_bzero(mlx->i.canvas, WINX * WINY * 4);
 	init_key(mlx);
 	fill_palette(mlx);
+	if (mlx->clr.dec == 1)
+		decalage_palette(mlx);
 }
 
 int		multi_thread(t_mlx *pmlx)

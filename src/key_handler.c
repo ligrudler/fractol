@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 19:12:43 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/04 10:12:37 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/04 10:41:17 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,5 @@ void	init_key(t_mlx *mlx)
 	if (mlx->keyboard[KEY_F] && mlx->clr.end >= 1)
 		mlx->clr.end -= 1;
 	if (mlx->keyboard[KEY_N])
-	{
-		int i;
-		int tmp;
-
-		i = 0;
-		tmp = mlx->clr.palette[0];
-		while ( i < 15)
-		{
-			mlx->clr.palette[i] = mlx->clr.palette[i + 1];
-			i++;
-		}
-		mlx->clr.palette[i] = tmp;
-		mlx->clr.j = 1;
-	}
+		decalage_palette(mlx);
 }

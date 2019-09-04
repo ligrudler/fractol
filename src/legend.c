@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 23:29:53 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/04 10:31:12 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/04 10:54:34 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,10 @@ void	print_menu(t_mlx *mlx)
 				mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 990, 660, 0x5F1850, "VIOLET");
 			else if (mlx->clr.chgcolor == 3)
 				mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 1070, 660, 0x8F000D, "ROUGE");
-			mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 840, 730, 0x191970,
+			mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 840, 700, 0x191970,
 		"Decaler couleurs : N");
+			mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 840, 730, 0x191970,
+		"En continu : clic gauche");
 		}
 }
 
