@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 13:24:30 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/03 22:33:12 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/04 10:25:10 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	autre_calc(t_mlx *pmlx)
 		tmp = pmlx->a.z_r;
 		pmlx->a.z_r = pmlx->a.z_r * pmlx->a.z_r - pmlx->a.z_i
 			* pmlx->a.z_i + pmlx->a.c_r + (pmlx->m.j_x / (WINX / 2) )- 1;
-		pmlx->a.z_i = 2 * pmlx->a.z_i * tmp + pmlx->a.c_i + (pmlx->m.j_y
+		pmlx->a.z_i = 2 * fabs(pmlx->a.z_i * tmp) + pmlx->a.c_i + (pmlx->m.j_y
 			/ (WINY / 2)) - 1;
 		pmlx->a.it++;
 	}

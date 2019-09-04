@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:14 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/04 10:16:04 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/04 10:18:27 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int		mouse_hook(int button, int x, int y, void *param)
 	{
 		if (mlx->stop == 1)
 			mlx->stop = 0;
-		else if (mlx->stop == 0)
+		else
 			mlx->stop = 1;
 	}
 	if (x > 1155 && y < 380 && x < 1188 && y > 359 && mlx->fract != 3)

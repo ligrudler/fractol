@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:56 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/04 10:12:56 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/04 10:25:26 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	init_all(t_mlx *pmlx)
 	}
 	else if (pmlx->fract == 3)
 	{
-		pmlx->a.x1 = -2.1;
-		pmlx->a.y1 = -1.5;
+		pmlx->a.x1 = -1.6;
+		pmlx->a.y1 = -1.6;
 	}
 }
 

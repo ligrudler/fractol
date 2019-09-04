@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 23:29:53 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/03 21:37:47 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/04 10:31:12 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ void	menu_gradient(t_leg leg, t_mlx *mlx)
 	sprintf(leg.deg, "Degrade :          x%.2f", mlx->clr.end / 15);
 		mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 840, 245, 0xFFFFFF, leg.deg);
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 840, 730, 0x191970,
-		"Ajuster degrade : D / F");	
+		"Ajuster degrade : D / F");
+
 }
 
 void	print_menu(t_mlx *mlx)
@@ -75,6 +76,8 @@ void	print_menu(t_mlx *mlx)
 				mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 990, 660, 0x5F1850, "VIOLET");
 			else if (mlx->clr.chgcolor == 3)
 				mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 1070, 660, 0x8F000D, "ROUGE");
+			mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 840, 730, 0x191970,
+		"Decaler couleurs : N");
 		}
 }
 
