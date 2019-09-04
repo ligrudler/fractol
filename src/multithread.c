@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:56 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/03 20:32:18 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/04 10:12:56 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ void	init_all(t_mlx *pmlx)
 	}
 	else if (pmlx->fract == 3)
 	{
-		pmlx->a.x1 = -1.6;
-		pmlx->a.y1 = -1.6;
+		pmlx->a.x1 = -2.1;
+		pmlx->a.y1 = -1.5;
 	}
 }
 
@@ -49,7 +49,7 @@ void	init_var(t_mlx *pmlx)
 	pmlx->clr.gradient = 0;
 	pmlx->clr.end = 15;
 	pmlx->clr.color = 0x0000FF;
-	pmlx->clr.j = -1;
+	pmlx->clr.j = 0;
 	init_all(pmlx);
 }
 
@@ -75,11 +75,11 @@ int		multi_thread(t_mlx *pmlx)
 		tab[i].a.y_max = WIN_THREAD * (i + 1);
 		if (tab[i].fract == 0)
 			pthread_create(&t[i], NULL, mandelbrot, &tab[i]);
-		if (tab[i].fract == 1)
+		else if (tab[i].fract == 1)
 			pthread_create(&t[i], NULL, julia, &tab[i]);
-		if (tab[i].fract == 2)
+		else if (tab[i].fract == 2)
 			pthread_create(&t[i], NULL, burning, &tab[i]);
-		if (tab[i].fract == 3)
+		else if (tab[i].fract == 3)
 			pthread_create(&t[i], NULL, autre, &tab[i]);
 		i++;
 	}

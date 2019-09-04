@@ -6,48 +6,53 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 13:24:30 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/03 20:31:01 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/03 22:33:12 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/fractol.h"
 
-void	autre_calc(t_mlx *mlx)
+void	autre_calc(t_mlx *pmlx)
 {
-	mlx->a.c_r = mlx->a.x / mlx->a.zoom + mlx->a.x1;
-	mlx->a.c_i = mlx->a.y / mlx->a.zoom + mlx->a.y1;
-	mlx->a.z_r = 0;
-	mlx->a.z_i = 0;
-	mlx->a.it = 0;
-	while (mlx->a.z_r * mlx->a.z_r + mlx->a.z_i * mlx->a.z_i < 4 
-		&& mlx->a.it < mlx->a.it_max)
+	double tmp;
+
+	pmlx->a.c_r = 0.285;
+	pmlx->a.c_i = 0.01;
+	pmlx->a.z_r = pmlx->a.x / pmlx->a.zoom + pmlx->a.x1;
+	pmlx->a.z_i = pmlx->a.y / pmlx->a.zoom + pmlx->a.y1;
+	pmlx->a.it = 0;
+	while (pmlx->a.z_r * pmlx->a.z_r + pmlx->a.z_i * pmlx->a.z_i < 4
+		&& pmlx->a.it < pmlx->a.it_max)
 	{
-		mlx->a.temp = mlx->a.z_r;
-		mlx->a.z_r = mlx->a.z_r * mlx->a.z_r - mlx->a.z_i * mlx->a.z_i 
-			+ mlx->a.c_r;
-		mlx->a.z_i = 2 * mlx->a.z_i * mlx->a.temp + mlx->a.c_i;
-		mlx->a.it++;
+		tmp = pmlx->a.z_r;
+		pmlx->a.z_r = pmlx->a.z_r * pmlx->a.z_r - pmlx->a.z_i
+			* pmlx->a.z_i + pmlx->a.c_r + (pmlx->m.j_x / (WINX / 2) )- 1;
+		pmlx->a.z_i = 2 * pmlx->a.z_i * tmp + pmlx->a.c_i + (pmlx->m.j_y
+			/ (WINY / 2)) - 1;
+		pmlx->a.it++;
 	}
-	if (mlx->a.it >= mlx->a.it_max)
-		put_pixel_to_img(mlx, 0x000000, mlx->a.x, mlx->a.y);
-	else if (mlx->clr.gradient == 0)
-		put_pixel_to_img(mlx, mlx->clr.palette[mlx->a.it % 16], mlx->a.x,
-			mlx->a.y);
-	else if (mlx->clr.gradient == 1)
-		put_pixel_to_img(mlx, get_color(mlx), mlx->a.x, mlx->a.y);
 }
 
 
 void		*autre(void *param)
 {
-	t_mlx	*pmlx;
+	t_mlx		*pmlx;
 
 	pmlx = (t_mlx *)param;
-	while (pmlx->a.y++ < pmlx->a.y_max)
+	while(pmlx->a.y++ < pmlx->a.y_max)
 	{
-		pmlx->a.y = 0;
+		pmlx->a.x = 0;
 		while (pmlx->a.x++ < WINX)
+		{
 			autre_calc(pmlx);
+			if (pmlx->a.it >= pmlx->a.it_max)
+				put_pixel_to_img(pmlx, 0x000000, pmlx->a.x, pmlx->a.y);
+			else if (pmlx->clr.gradient == 0)
+				put_pixel_to_img(pmlx, pmlx->clr.palette[pmlx->a.it % 16],
+					pmlx->a.x, pmlx->a.y);
+			else if (pmlx->clr.gradient == 1)
+				put_pixel_to_img(pmlx, get_color(pmlx), pmlx->a.x, pmlx->a.y);
+		}
 	}
 	return (param);
 }

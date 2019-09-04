@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/28 16:25:18 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/03 20:31:26 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/04 10:13:43 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		fill_palette(t_mlx *mlx)
 {
-	if (mlx->clr.chgcolor == 0)
+	if (mlx->clr.chgcolor == 0 && mlx->clr.j == 0)
 	{
 		mlx->clr.palette[0] = BLUE_0;
 		mlx->clr.palette[1] = BLUE_1;
@@ -33,7 +33,7 @@ void		fill_palette(t_mlx *mlx)
 		mlx->clr.palette[14] = BLUE_14;
 		mlx->clr.palette[15] = BLUE_15;
 	}
-	if (mlx->clr.chgcolor == 1)
+	if (mlx->clr.chgcolor == 1 && mlx->clr.j == 0)
 	{
 		mlx->clr.palette[0] = BROWN_0;
 		mlx->clr.palette[1] = BROWN_1;
@@ -52,7 +52,7 @@ void		fill_palette(t_mlx *mlx)
 		mlx->clr.palette[14] = BROWN_14;
 		mlx->clr.palette[15] = BROWN_15;
 	}
-	if (mlx->clr.chgcolor == 2)
+	if (mlx->clr.chgcolor == 2 && mlx->clr.j == 0)
 	{
 		mlx->clr.palette[0] = PURPL_0;
 		mlx->clr.palette[1] = PURPL_1;
@@ -71,7 +71,7 @@ void		fill_palette(t_mlx *mlx)
 		mlx->clr.palette[14] = PURPL_14;
 		mlx->clr.palette[15] = PURPL_15;
 	}
-	if (mlx->clr.chgcolor == 3)
+	if (mlx->clr.chgcolor == 3 && mlx->clr.j == 0)
 	{
 		mlx->clr.palette[0] = RED_0;
 		mlx->clr.palette[1] = RED_1;

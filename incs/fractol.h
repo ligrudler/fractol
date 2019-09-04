@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/03 20:32:51 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/04 10:12:11 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define WINY 800
 # define WINALL 1200
 # define ZOOM 250
-# define NBR_THREAD 80
+# define NBR_THREAD 400
 # define WIN_THREAD (WINX / NBR_THREAD)
 
 typedef struct	s_img

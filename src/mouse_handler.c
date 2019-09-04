@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:14 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/03 20:32:12 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/04 10:16:04 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,25 @@ void	set_menu(int x, int y, t_mlx *mlx)
 	else if (x > 980 && x < 1030 && y > 695 && y < 711)
 		mlx->clr.color = 0xFFCC33;
 	else if (x > 860 && x < 900 && y > 665 && y < 678)
+	{
 		mlx->clr.chgcolor = 0;
+		mlx->clr.j = 0;
+	}
 	else if (x > 920 && x < 970 && y > 665 && y < 678)
+	{
 		mlx->clr.chgcolor = 1;
+		mlx->clr.j = 0;
+	}	
 	else if (x > 990 && x < 1050 && y > 665 && y < 678)
+	{
 		mlx->clr.chgcolor = 2;
+		mlx->clr.j = 0;
+	}
 	else if (x > 1070 && x < 1120 && y > 665 && y < 678)
+	{
 		mlx->clr.chgcolor = 3;
+		mlx->clr.j = 0;
+	}
 }
 
 int		mouse_hook(int button, int x, int y, void *param)
@@ -80,7 +92,7 @@ int		mouse_hook(int button, int x, int y, void *param)
 		else if (mlx->stop == 0)
 			mlx->stop = 1;
 	}
-	if (x > 1155 && y < 380 && x < 1188 && y > 359 && mlx->fract != 2)
+	if (x > 1155 && y < 380 && x < 1188 && y > 359 && mlx->fract != 3)
 	{
 		mlx->fract++;
 		init_var(mlx);

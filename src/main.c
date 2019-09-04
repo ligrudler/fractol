@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/03 20:32:01 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/04 10:14:07 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,6 @@ int		main(int argc, char **argv)
 		mlx_loop(mlx.mlx_ptr);
 	}
 	else
-		ft_putendl("Usage /fractol \"mandelbrot\" wesh");
+		ft_putendl("Usage /fractol mandelbrot\n /fractol julia\n /fractol burningship");
 	return (0);
 }

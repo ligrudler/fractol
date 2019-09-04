@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 23:29:53 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/03 20:31:56 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/03 21:37:47 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	print_var(t_mlx *mlx)
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 1030, 220, 0xFFFFFF,
 		ft_itoa(mlx->a.it_max));
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 1120, 220, 0xFFFFFF, "(I / O)");
-	if (mlx->stop == 1 && mlx->fract == 1)
+	if (mlx->stop == 1 && (mlx->fract == 1 || mlx->fract == 3))
 		mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 70, 70, 0xFFFFFF, "STOP");
 }
 
