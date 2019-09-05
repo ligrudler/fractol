@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/04 10:14:07 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/04 11:06:22 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_which_frac(char **argv, t_mlx *mlx)
 		mlx->fract = 1;
 	else if (ft_strcmp(argv[1], "burningship") == 0)
 		mlx->fract = 2;
-	else if (ft_strcmp(argv[1], "autre") == 0)
+	else if (ft_strcmp(argv[1], "burningjulia") == 0)
 		mlx->fract = 3;
 	else
 	{

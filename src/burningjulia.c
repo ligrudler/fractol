@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   autre.c                                            :+:      :+:    :+:   */
+/*   burningjulia.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 13:24:30 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/04 10:25:10 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/04 14:50:54 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/fractol.h"
 
-void	autre_calc(t_mlx *pmlx)
+void	burningjulia_calc(t_mlx *pmlx)
 {
 	double tmp;
 
@@ -34,7 +34,7 @@ void	autre_calc(t_mlx *pmlx)
 }
 
 
-void		*autre(void *param)
+void		*burningjulia(void *param)
 {
 	t_mlx		*pmlx;
 
@@ -44,7 +44,7 @@ void		*autre(void *param)
 		pmlx->a.x = 0;
 		while (pmlx->a.x++ < WINX)
 		{
-			autre_calc(pmlx);
+			burningjulia_calc(pmlx);
 			if (pmlx->a.it >= pmlx->a.it_max)
 				put_pixel_to_img(pmlx, 0x000000, pmlx->a.x, pmlx->a.y);
 			else if (pmlx->clr.gradient == 0)

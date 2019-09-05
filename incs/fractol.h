@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/04 10:47:59 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/04 12:44:24 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define WINY 800
 # define WINALL 1200
 # define ZOOM 250
-# define NBR_THREAD 400
+# define NBR_THREAD 80
 # define WIN_THREAD (WINX / NBR_THREAD)
 
 typedef struct	s_img
@@ -95,6 +95,9 @@ typedef struct	s_mlx
 	char		keyboard[512];
 	int			stop;
 
+	int			thread;
+
+	pthread_t	t[NBR_THREAD];
 	t_algo		a;
 	t_img		i;
 	t_color		clr;
@@ -102,8 +105,8 @@ typedef struct	s_mlx
 	t_leg		l;
 }				t_mlx;
 
-void	autre_calc(t_mlx *mlx);
-void		*autre(void *param);
+void	burningjulia_calc(t_mlx *mlx);
+void		*burningjulia(void *param);
 void	burning_calc(t_mlx *pmlx);
 void		*burning(void *param);
 void		fill_palette(t_mlx *mlx);

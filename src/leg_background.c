@@ -6,7 +6,7 @@
 /*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 13:12:04 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/03 21:00:48 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/04 11:09:37 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,5 @@ void	print_name(t_mlx *mlx)
 			"BURNINGSHIP");
 	else if (mlx->fract == 3)
 		mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 820, 60, 0x0000CD, 
-			"AUTRE");
+			"BURNINGJULIA");
 }
