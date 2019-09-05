@@ -6,7 +6,7 @@
 #    By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 19:35:02 by grudler           #+#    #+#              #
-#    Updated: 2019/09/05 12:47:52 by lgrudler         ###   ########.fr        #
+#    Updated: 2019/09/05 15:24:20 by lgrudler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ MAGENTA= \033[35m
 NAME= fractol
 CC= gcc
 CFLAGS= -Wall -Wextra -Werror
-FRAMEWORK=  -framework OpenGL -framework AppKit
+FRAMEWORK=  -O2 -framework OpenGL -framework AppKit
 SRC_DIR= src/
 SRC= main.c\
 	 mandelbrot.c\

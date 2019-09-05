@@ -144,5 +144,9 @@
 # define EV_CLOSE_WIN    17
 
 # define MOTION_NOTIFY	6
+# define CLIC_DROIT 2
+# define CLIC_GAUCHE 1
+# define UP_MOLETTE 4
+# define DOWN_MOLETTE 5
 
 #endif

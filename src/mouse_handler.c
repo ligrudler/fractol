@@ -6,7 +6,7 @@
 /*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:14 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/05 13:57:47 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/09/05 15:24:50 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int			mouse_hook(int button, int x, int y, void *param)
 	zoom_dezoom(button, x, y, mlx);
 	if (button == CLIC_DROIT)
 		mlx->stop = (mlx->stop == 1 ? 0 : 1);
-	if (button == CLIC_GAUCHE && x < WINX && y < WINY)
+	if (button == CLIC_GAUCHE && x < WINX && y < WINY && y > 0)
 		mlx->clr.dec = (mlx->clr.dec == 1 ? 0 : 1);
 	if (x > 1155 && y < 380 && x < 1188 && y > 359 && mlx->fract != 3)
 	{

@@ -6,7 +6,7 @@
 /*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/05 14:29:49 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/09/05 15:51:08 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,7 @@
 # define ZOOM 250
 # define NBR_THREAD 80
 # define WIN_THREAD (WINX / NBR_THREAD)
-# define CLIC_DROIT 2
-# define CLIC_GAUCHE 1
-# define UP_MOLETTE 4
-# define DOWN_MOLETTE 5
+
 
 typedef struct	s_img
 {
@@ -87,7 +84,7 @@ typedef struct	s_algo
 typedef struct	s_leg
 {
 	char		zoom[128];
-	char		deg[100];
+	char		deg[128];
 }				t_leg;
 
 typedef struct	s_mlx

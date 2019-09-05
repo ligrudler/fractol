@@ -6,17 +6,11 @@
 /*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/05 13:13:06 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/09/05 15:39:10 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/fractol.h"
-
-void		put_pixel_to_img(t_mlx *mlx, int color, int x, int y)
-{
-	if (x < WINALL && y < WINY)
-		*(int *)&mlx->i.canvas[y * mlx->i.size_line + x * 4] = color;
-}
 
 void		init_mlx(t_mlx *mlx)
 {
