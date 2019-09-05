@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   multithread.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:56 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/04 14:50:56 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/05 14:39:53 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../incs/fractol.h"
+#include "../incs/fractol.h"
 
 void	first_step(t_mlx *mlx)
 {
@@ -21,32 +21,48 @@ void	first_step(t_mlx *mlx)
 		decalage_palette(mlx);
 }
 
-int		multi_thread(t_mlx *pmlx)
+void	print_thread_error(t_mlx *pmlx)
+{
+	ft_putstr("Error thread create\n");
+	mlx_destroy_image(pmlx->ptr, pmlx->i.img);
+	mlx_destroy_window(pmlx->ptr, pmlx->win_ptr);
+	exit(0);
+}
+
+void	create_thread(t_mlx *pmlx)
 {
 	t_mlx		tab[NBR_THREAD];
 	pthread_t	t[NBR_THREAD];
 	int			i;
 
-	i = 0;
-	first_step(pmlx);
-	while (i < NBR_THREAD)
+	i = -1;
+	while (++i < NBR_THREAD)
 	{
 		ft_memcpy((void *)&tab[i], (void *)pmlx, sizeof(t_mlx));
 		tab[i].a.y = WIN_THREAD * (i);
 		tab[i].a.y_max = WIN_THREAD * (i + 1);
-		if (tab[i].fract == 0)
-			pthread_create(&t[i], NULL, mandelbrot, &tab[i]);
-		else if (tab[i].fract == 1)
-			pthread_create(&t[i], NULL, julia, &tab[i]);
-		else if (tab[i].fract == 2)
-			pthread_create(&t[i], NULL, burning, &tab[i]);
-		else if (tab[i].fract == 3)
-			pthread_create(&t[i], NULL, burningjulia, &tab[i]);
-		i++;
+		if (tab[i].fract == 0 && pthread_create(&t[i], NULL, mandelbrot,
+			&tab[i]))
+			print_thread_error(pmlx);
+		else if (tab[i].fract == 1 && pthread_create(&t[i], NULL, julia,
+			&tab[i]))
+			print_thread_error(pmlx);
+		else if (tab[i].fract == 2 && pthread_create(&t[i], NULL, burning,
+			&tab[i]))
+			print_thread_error(pmlx);
+		else if (tab[i].fract == 3 && pthread_create(&t[i], NULL, burningjulia,
+			&tab[i]))
+			print_thread_error(pmlx);
 	}
 	while (i--)
 		pthread_join(t[i], NULL);
-	mlx_put_image_to_window(pmlx->mlx_ptr, pmlx->win_ptr, pmlx->i.img, 0, 0);
+}
+
+int		multi_thread(t_mlx *pmlx)
+{
+	first_step(pmlx);
+	create_thread(pmlx);
+	mlx_put_image_to_window(pmlx->ptr, pmlx->win_ptr, pmlx->i.img, 0, 0);
 	print_legend(pmlx);
 	return (0);
 }

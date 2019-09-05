@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mouse_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:11:14 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/04 10:59:57 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/05 13:57:47 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/fractol.h"
 
-int		motion_notify(int x, int y, void *param)
+int			motion_notify(int x, int y, void *param)
 {
 	t_mlx *pmlx;
 
@@ -23,25 +23,52 @@ int		motion_notify(int x, int y, void *param)
 	pmlx->m.j_y = y;
 	return (0);
 }
-void	zoom_dezoom(int button, int x, int y, t_mlx *mlx)
+
+void		zoom_dezoom(int button, int x, int y, t_mlx *mlx)
 {
-	if (button == 4 && x < WINX)
+	if (button == UP_MOLETTE && x < WINX)
 	{
 		mlx->a.x1 = (x / mlx->a.zoom + mlx->a.x1) - (x / (mlx->a.zoom * 1.1));
 		mlx->a.y1 = (y / mlx->a.zoom + mlx->a.y1) - (y / (mlx->a.zoom * 1.1));
 		mlx->a.zoom = mlx->a.zoom * 1.1;
 	}
-	if (button == 5 && x < WINX && mlx->a.zoom > 0)
+	if (button == DOWN_MOLETTE && x < WINX && mlx->a.zoom > 0)
 	{
-		mlx->a.x1 = (x / mlx->a.zoom + mlx->a.x1) - (x / (mlx->a.zoom / 1.1	));
+		mlx->a.x1 = (x / mlx->a.zoom + mlx->a.x1) - (x / (mlx->a.zoom / 1.1));
 		mlx->a.y1 = (y / mlx->a.zoom + mlx->a.y1) - (y / (mlx->a.zoom / 1.1));
 		mlx->a.zoom = mlx->a.zoom / 1.1;
 	}
 }
 
-void	set_menu(int x, int y, t_mlx *mlx)
+void		change_color(int x, int y, t_mlx *mlx)
 {
-	if (x > 1065 && y > 610 && y < 626 && x < 1105)
+	if (x > 860 && x < 900 && y > 665 && y < 678)
+	{
+		mlx->clr.chgcolor = 0;
+		mlx->clr.j = 0;
+	}
+	else if (x > 920 && x < 970 && y > 665 && y < 678)
+	{
+		mlx->clr.chgcolor = 1;
+		mlx->clr.j = 0;
+	}
+	else if (x > 990 && x < 1050 && y > 665 && y < 678)
+	{
+		mlx->clr.chgcolor = 2;
+		mlx->clr.j = 0;
+	}
+	else if (x > 1070 && x < 1120 && y > 665 && y < 678)
+	{
+		mlx->clr.chgcolor = 3;
+		mlx->clr.j = 0;
+	}
+}
+
+void		set_menu(int x, int y, t_mlx *mlx)
+{
+	if (x > 915 && x < 985 && y > 610 && y < 626)
+		mlx->clr.gradient = 1;
+	else if (x > 1065 && y > 610 && y < 626 && x < 1105)
 		mlx->clr.gradient = 0;
 	else if (x > 860 && x < 900 && y > 645 && y < 661)
 		mlx->clr.color = 0x0000FF;
@@ -57,48 +84,19 @@ void	set_menu(int x, int y, t_mlx *mlx)
 		mlx->clr.color = 0x33CC33;
 	else if (x > 980 && x < 1030 && y > 695 && y < 711)
 		mlx->clr.color = 0xFFCC33;
-	else if (x > 860 && x < 900 && y > 665 && y < 678)
-	{
-		mlx->clr.chgcolor = 0;
-		mlx->clr.j = 0;
-	}
-	else if (x > 920 && x < 970 && y > 665 && y < 678)
-	{
-		mlx->clr.chgcolor = 1;
-		mlx->clr.j = 0;
-	}	
-	else if (x > 990 && x < 1050 && y > 665 && y < 678)
-	{
-		mlx->clr.chgcolor = 2;
-		mlx->clr.j = 0;
-	}
-	else if (x > 1070 && x < 1120 && y > 665 && y < 678)
-	{
-		mlx->clr.chgcolor = 3;
-		mlx->clr.j = 0;
-	}
+	change_color(x, y, mlx);
 }
 
-int		mouse_hook(int button, int x, int y, void *param)
+int			mouse_hook(int button, int x, int y, void *param)
 {
-	t_mlx *mlx;
+	t_mlx	*mlx;
 
 	mlx = (t_mlx *)param;
 	zoom_dezoom(button, x, y, mlx);
-	if (button == 2)
-	{
-		if (mlx->stop == 1)
-			mlx->stop = 0;
-		else
-			mlx->stop = 1;
-	}
-	if (button == 1 && x < WINX && y < WINY)
-	{
-		if (mlx->clr.dec == 1)
-			mlx->clr.dec = 0;
-		else
-			mlx->clr.dec = 1;
-	}
+	if (button == CLIC_DROIT)
+		mlx->stop = (mlx->stop == 1 ? 0 : 1);
+	if (button == CLIC_GAUCHE && x < WINX && y < WINY)
+		mlx->clr.dec = (mlx->clr.dec == 1 ? 0 : 1);
 	if (x > 1155 && y < 380 && x < 1188 && y > 359 && mlx->fract != 3)
 	{
 		mlx->fract++;
@@ -109,8 +107,6 @@ int		mouse_hook(int button, int x, int y, void *param)
 		mlx->fract = 0;
 		init_var(mlx);
 	}
-	if (x > 915 && x < 985 && y > 610 && y < 626)
-		mlx->clr.gradient = 1;
 	set_menu(x, y, mlx);
 	return (0);
 }

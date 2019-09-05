@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 18:41:54 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/04 14:50:52 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/05 13:13:28 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/fractol.h"
 
-void	mandel_calc(t_mlx *mlx)
+void		mandel_calc(t_mlx *mlx)
 {
 	mlx->a.c_r = mlx->a.x / mlx->a.zoom + mlx->a.x1;
 	mlx->a.c_i = mlx->a.y / mlx->a.zoom + mlx->a.y1;

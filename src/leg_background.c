@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   leg_background.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 13:12:04 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/04 11:09:37 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/05 12:46:21 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../incs/fractol.h"
+#include "../incs/fractol.h"
 
 void	draw_little_square(t_mlx *mlx)
 {
-	int x;
-	int y;
-	
+	int	x;
+	int	y;
+
 	y = 360;
 	while (y++ > 359 && y < 380)
 	{
@@ -28,8 +28,8 @@ void	draw_little_square(t_mlx *mlx)
 
 void	color_box_legend(t_mlx *mlx)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (y++ <= WINY)
@@ -46,21 +46,21 @@ void	color_box_legend(t_mlx *mlx)
 		}
 	}
 	draw_little_square(mlx);
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->i.img, 0, 0);
+	mlx_put_image_to_window(mlx->ptr, mlx->win_ptr, mlx->i.img, 0, 0);
 }
 
 void	print_name(t_mlx *mlx)
 {
 	if (mlx->fract == 0)
-		mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 820, 60, 
+		mlx_string_put(mlx->ptr, mlx->win_ptr, 820, 60,
 			0x191970, "MANDELBROT");
 	else if (mlx->fract == 1)
-		mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 820, 60, 
+		mlx_string_put(mlx->ptr, mlx->win_ptr, 820, 60,
 			0x0000CD, "JULIA");
 	else if (mlx->fract == 2)
-		mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 820, 60, 0x0000CD, 
+		mlx_string_put(mlx->ptr, mlx->win_ptr, 820, 60, 0x0000CD,
 			"BURNINGSHIP");
 	else if (mlx->fract == 3)
-		mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 820, 60, 0x0000CD, 
+		mlx_string_put(mlx->ptr, mlx->win_ptr, 820, 60, 0x0000CD,
 			"BURNINGJULIA");
 }

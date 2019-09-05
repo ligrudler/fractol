@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   burningship.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/27 22:59:01 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/03 20:31:17 by grudler          ###   ########.fr       */
+/*   Updated: 2019/09/05 11:45:54 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../incs/fractol.h"
 
-void	burning_calc(t_mlx *pmlx)
+void		burning_calc(t_mlx *pmlx)
 {
 	pmlx->a.c_r = pmlx->a.x / pmlx->a.zoom + pmlx->a.x1;
 	pmlx->a.c_i = pmlx->a.y / pmlx->a.zoom + pmlx->a.y1;
