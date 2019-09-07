@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+         #
+#    By: grudler <grudler@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 19:35:02 by grudler           #+#    #+#              #
-#    Updated: 2019/09/05 15:24:20 by lgrudler         ###   ########.fr        #
+#    Updated: 2019/09/07 19:08:24 by grudler          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ SRC= main.c\
 SRCS= $(addprefix $(SRC_DIR),$(SRC))
 OBJ_DIR= obj/
 OBJ= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
-LIB= -L /Usr/local/lib -lmlx\
+LIB= -L /Users/grudler/Downloads/minilibx_macos/ -lmlx\
 	 -L libft -lft
 
 ###############################################################################

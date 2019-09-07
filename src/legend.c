@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   legend.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 23:29:53 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/05 15:37:45 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/09/07 19:14:42 by grudler          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 void		print_var(t_mlx *mlx)
 {
 	t_leg	leg;
+	char	*str;
 
 	sprintf(leg.zoom, "Zoom :             x%.2f", mlx->a.zoom / ZOOM);
 	mlx_string_put(mlx->ptr, mlx->win_ptr, 840, 195, 0xFFFFFF, leg.zoom);
 	mlx_string_put(mlx->ptr, mlx->win_ptr, 840, 220, 0xFFFFFF,
 		"Iterations max : ");
-	mlx_string_put(mlx->ptr, mlx->win_ptr, 1030, 220, 0xFFFFFF,
-		ft_itoa(mlx->a.it_max));
+	str = ft_itoa(mlx->a.it_max);
+	mlx_string_put(mlx->ptr, mlx->win_ptr, 1030, 220, 0xFFFFFF, str);
+	free(str);
 	mlx_string_put(mlx->ptr, mlx->win_ptr, 1120, 220, 0xFFFFFF, "(I / O)");
 	if (mlx->stop == 1 && (mlx->fract == 1 || mlx->fract == 3))
 		mlx_string_put(mlx->ptr, mlx->win_ptr, 70, 70, 0xFFFFFF, "STOP");
