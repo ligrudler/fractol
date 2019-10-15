@@ -6,7 +6,7 @@
 /*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 10:35:25 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/05 15:27:51 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/10/15 15:16:20 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,17 @@ void		decalage_palette(t_mlx *mlx)
 	}
 	mlx->clr.palette[i] = tmp;
 	mlx->clr.j = 1;
+}
+
+void		clean_mlx(t_mlx *mlx, int idx)
+{
+	if (mlx->i.img)
+		mlx_destroy_image(mlx->ptr, mlx->i.img);
+	if (mlx->win_ptr)
+		mlx_destroy_window(mlx->ptr, mlx->win_ptr);
+	if (idx == 0)
+		ft_putstr("Error\n");
+	if (idx == 2)
+		ft_putstr("Error thread create\n");
+	exit(0);
 }

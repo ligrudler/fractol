@@ -6,9 +6,12 @@
 /*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 17:12:19 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/05 14:50:43 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/10/15 15:25:34 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef COLORCODE_H
+# define COLORCODE_H
 
 # define BLUE_0		0x19071A
 # define BLUE_1		0x09012F
@@ -94,3 +97,5 @@
 # define RED_13		0x995700
 # define RED_14		0x6A3403
 # define RED_15		0x421E0F
+
+#endif

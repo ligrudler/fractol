@@ -6,7 +6,7 @@
 /*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 19:12:43 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/05 12:46:21 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/10/15 15:10:15 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,15 +45,11 @@ void		key_move(t_mlx *mlx)
 void		init_key(t_mlx *mlx)
 {
 	if (mlx->keyboard[KEY_ESCAPE])
-	{
-		mlx_destroy_image(mlx->ptr, mlx->i.img);
-		mlx_destroy_window(mlx->ptr, mlx->win_ptr);
-		exit(0);
-	}
+		clean_mlx(mlx, 1);
 	key_move(mlx);
 	if (mlx->keyboard[KEY_SPACEBAR])
 		init_var(mlx);
-	if (mlx->keyboard[KEY_I])
+	if (mlx->keyboard[KEY_I] && mlx->a.it_max < 2000)
 		mlx->a.it_max += 10;
 	if (mlx->keyboard[KEY_O] && mlx->a.it_max > 10)
 		mlx->a.it_max -= 10;

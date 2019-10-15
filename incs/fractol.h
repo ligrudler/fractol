@@ -6,17 +6,20 @@
 /*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:47:28 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/05 15:51:08 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/10/15 15:42:51 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "../mlx.h"
-#include "keycode.h"
-#include <pthread.h>
-#include <math.h>
-#include "colorcode.h"
-#include <stdio.h>
+#ifndef FRACTOL_H
+# define FRACTOL_H
+
+# include "../libft/libft.h"
+# include "mlx.h"
+# include "keycode.h"
+# include "colorcode.h"
+# include <pthread.h>
+# include <math.h>
+# include <stdio.h>
 
 # define WINX 800
 # define WINY 800
@@ -24,7 +27,6 @@
 # define ZOOM 250
 # define NBR_THREAD 80
 # define WIN_THREAD (WINX / NBR_THREAD)
-
 
 typedef struct	s_img
 {
@@ -103,40 +105,116 @@ typedef struct	s_mlx
 	t_leg		l;
 }				t_mlx;
 
-void			burningjulia_calc(t_mlx *mlx);
-void			*burningjulia(void *param);
-void			burning_calc(t_mlx *pmlx);
-void			*burning(void *param);
-void			fill_palette(t_mlx *mlx);
-double			get_percent(int start, int end, int current);
-double			get_light(int start, int end, double percent);
-int				get_color(t_mlx *mlx);
-void			julia_calc(t_mlx *pmlx);
-void			*julia(void *param);
-int				key_press(int key, void *param);
-int				key_release(int key, void *param);
-void			init_key(t_mlx *mlx);
-void			draw_little_square(t_mlx *mlx);
-void			color_box_legend(t_mlx *mlx);
-void			print_name(t_mlx *mlx);
-void			print_var(t_mlx *mlx);
-void			menu_gradient(t_leg leg, t_mlx *mlx);
-void			print_menu(t_mlx *mlx);
-int				print_legend(t_mlx *mlx);
-void			put_pixel_to_img(t_mlx *mlx, int color, int x, int y);
-void			init_mlx(t_mlx *mlx);
+/*
+** main.c
+*/
+
 int				ft_which_frac(char **argv, t_mlx *mlx);
-void			mandel_calc(t_mlx *mlx);
+void			init_mlx(t_mlx *mlx);
+
+/*
+** mandelbrot.c
+*/
+
 void			*mandelbrot(void *param);
-int				motion_notify(int x, int y, void *param);
-void			zoom_dezoom(int button, int x, int y, t_mlx *mlx);
-void			set_menu(int x, int y, t_mlx *mlx);
-int				mouse_hook(int button, int x, int y, void *param);
-void			init_all(t_mlx *pmlx);
+void			mandel_calc(t_mlx *mlx);
+
+/*
+** juia.c
+*/
+
+void			*julia(void *param);
+void			julia_calc(t_mlx *pmlx);
+
+/*
+** burningship.c
+*/
+
+void			*burning(void *param);
+void			burning_calc(t_mlx *pmlx);
+
+/*
+** burningjulia.c
+*/
+
+void			*burningjulia(void *param);
+void			burningjulia_calc(t_mlx *pmlx);
+
+/*
+** color.c
+*/
+
+void			set_color1(t_mlx *mlx);
+void			set_color2(t_mlx *mlx);
+void			set_color3(t_mlx *mlx);
+void			set_color4(t_mlx *mlx);
+void			fill_palette(t_mlx *mlx);
+
+/*
+** grad_color.c
+*/
+
+int				get_color(t_mlx *mlx);
+double			get_light(int start, int end, double percent);
+double			get_percent(int start, int end, int current);
+
+/*
+** init_var.c
+*/
+
 void			init_var(t_mlx *pmlx);
-void			first_step(t_mlx *mlx);
-int				multi_thread(t_mlx *pmlx);
-void			decalage_palette(t_mlx *mlx);
+void			init_all(t_mlx *pmlx);
+
+/*
+** key_handler.c
+*/
+
+void			init_key(t_mlx *mlx);
 void			key_move(t_mlx *mlx);
+int				key_release(int key, void *param);
+int				key_press(int key, void *param);
+
+/*
+** mouse_handler.c
+*/
+
+int				mouse_hook(int button, int x, int y, void *param);
+void			set_menu(int x, int y, t_mlx *mlx);
 void			change_color(int x, int y, t_mlx *mlx);
-void			print_thread_error(t_mlx *pmlx);
+void			change_color(int x, int y, t_mlx *mlx);
+int				motion_notify(int x, int y, void *param);
+
+/*
+** multithread.c
+*/
+
+int				multi_thread(t_mlx *pmlx);
+void			create_thread(t_mlx *pmlx);
+void			first_step(t_mlx *mlx);
+
+/*
+** leg_background.c
+*/
+
+void			print_name(t_mlx *mlx);
+void			color_box_legend(t_mlx *mlx);
+void			draw_little_square(t_mlx *mlx);
+
+/*
+** legend.c
+*/
+
+int				print_legend(t_mlx *mlx);
+void			print_menu(t_mlx *mlx);
+void			menu_gradient(t_leg leg, t_mlx *mlx);
+void			print_var(t_mlx *mlx);
+
+/*
+** utils.c
+*/
+
+void			clean_mlx(t_mlx *mlx, int idx);
+void			decalage_palette(t_mlx *mlx);
+void			put_pixel_to_img(t_mlx *mlx, int color, int x, int y);
+
+#endif

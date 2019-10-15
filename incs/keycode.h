@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   keycode.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/26 15:08:37 by grudler          #+#    #+#             */
-/*   Updated: 2019/08/30 20:38:38 by grudler          ###   ########.fr       */
+/*   Created: 2019/04/26 15:08:37 by lgrudler          #+#    #+#             */
+/*   Updated: 2019/10/15 15:25:34 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,17 +136,17 @@
 # define KEYPRESS           2
 # define KEYRELEASE         3
 
-# define EV_KEY_PRESS    2
-# define EV_KEY_RELEA    3
-# define EV_MOUSE_PRESS    4
-# define EV_MOUSE_RELEA    5
-# define EV_MOUSE_MOVE    6
-# define EV_CLOSE_WIN    17
+# define EV_KEY_PRESS       2
+# define EV_KEY_RELEA       3
+# define EV_MOUSE_PRESS     4
+# define EV_MOUSE_RELEA     5
+# define EV_MOUSE_MOVE      6
+# define EV_CLOSE_WIN       17
 
-# define MOTION_NOTIFY	6
-# define CLIC_DROIT 2
-# define CLIC_GAUCHE 1
-# define UP_MOLETTE 4
-# define DOWN_MOLETTE 5
+# define MOTION_NOTIFY      6
+# define CLIC_DROIT         2
+# define CLIC_GAUCHE        1
+# define UP_MOLETTE         4
+# define DOWN_MOLETTE       5
 
 #endif

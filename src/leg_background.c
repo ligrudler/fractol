@@ -6,7 +6,7 @@
 /*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 13:12:04 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/05 12:46:21 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/10/15 14:27:46 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	print_name(t_mlx *mlx)
 {
 	if (mlx->fract == 0)
 		mlx_string_put(mlx->ptr, mlx->win_ptr, 820, 60,
-			0x191970, "MANDELBROT");
+			0x0000CD, "MANDELBROT");
 	else if (mlx->fract == 1)
 		mlx_string_put(mlx->ptr, mlx->win_ptr, 820, 60,
 			0x0000CD, "JULIA");

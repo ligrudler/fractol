@@ -6,7 +6,7 @@
 /*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 11:56:08 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/05 15:39:10 by lgrudler         ###   ########.fr       */
+/*   Updated: 2019/10/15 15:12:16 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 void		init_mlx(t_mlx *mlx)
 {
 	if ((mlx->ptr = mlx_init()) == NULL)
-		ft_error();
+		clean_mlx(mlx, 0);
 	if ((mlx->win_ptr = mlx_new_window(mlx->ptr, 1200, WINY, "fractol"))
 		== NULL)
-		ft_error();
+		clean_mlx(mlx, 0);
 	if ((mlx->i.img = mlx_new_image(mlx->ptr, 1200, WINY)) == NULL)
-		ft_error();
+		clean_mlx(mlx, 0);
 	mlx->i.canvas = mlx_get_data_addr(mlx->i.img, &mlx->i.bpp,
 		&mlx->i.size_line, &mlx->i.endian);
 }

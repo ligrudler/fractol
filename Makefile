@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: grudler <grudler@student.42.fr>            +#+  +:+       +#+         #
+#    By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/03 19:35:02 by grudler           #+#    #+#              #
-#    Updated: 2019/09/07 19:08:24 by grudler          ###   ########.fr        #
+#    Updated: 2019/10/15 14:21:11 by lgrudler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ SRC= main.c\
 SRCS= $(addprefix $(SRC_DIR),$(SRC))
 OBJ_DIR= obj/
 OBJ= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
-LIB= -L /Users/grudler/Downloads/minilibx_macos/ -lmlx\
+LIB= -L /usr/local/lib -lmlx\
 	 -L libft -lft
 
 ###############################################################################
@@ -72,6 +72,8 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c |obj
 	@ echo "$(GREEN)[✔]$(WHITE)$@"
 
 clean:
+	@ echo "$(BLUE)Cleaning libft$(WHITE)"
+	@ make -C libft clean
 	@ echo "$(YELLOW)Deleting objects$(WHITE)"
 	@ for i in $(OBJ); do \
 		echo "$(RED)-Deleting $$i$(WHITE)"; \

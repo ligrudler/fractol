@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   legend.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: grudler <grudler@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lgrudler <lgrudler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/29 23:29:53 by grudler           #+#    #+#             */
-/*   Updated: 2019/09/07 19:14:42 by grudler          ###   ########.fr       */
+/*   Updated: 2019/10/15 14:44:22 by lgrudler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ void		print_var(t_mlx *mlx)
 	char	*str;
 
 	sprintf(leg.zoom, "Zoom :             x%.2f", mlx->a.zoom / ZOOM);
-	mlx_string_put(mlx->ptr, mlx->win_ptr, 840, 195, 0xFFFFFF, leg.zoom);
+	if (mlx->a.zoom < 10000000000)
+		mlx_string_put(mlx->ptr, mlx->win_ptr, 840, 195, 0xFFFFFF, leg.zoom);
+	else
+		mlx_string_put(mlx->ptr, mlx->win_ptr, 840, 195, 0x8B0000, "TOO BIG");
 	mlx_string_put(mlx->ptr, mlx->win_ptr, 840, 220, 0xFFFFFF,
 		"Iterations max : ");
 	str = ft_itoa(mlx->a.it_max);
